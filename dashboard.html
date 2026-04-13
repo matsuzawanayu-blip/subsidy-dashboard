@@ -43,9 +43,9 @@ table tr:nth-child(even) td{background:#fafafa}
 .report-footer{border-top:1px solid #999;margin-top:48px;padding-top:16px;font-size:0.78rem;color:#777}
 .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ddd;border:1px solid #ddd;margin:20px 0 32px}
 .kpi-card{background:#fff;padding:20px 16px;text-align:center}
+.kpi-card .kpi-label{font-size:0.72rem;color:#777;letter-spacing:0.05em;margin-bottom:4px}
 .kpi-card .kpi-value{font-size:2rem;font-weight:700;line-height:1}
-.kpi-card .kpi-label{font-size:0.72rem;color:#777;margin-top:6px;letter-spacing:0.05em}
-.kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:2px}
+.kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:4px}
 .score-bar{display:inline-flex;align-items:center;gap:6px}
 .score-fill{height:10px;background:#1a1a1a;display:inline-block}
 .score-empty{height:10px;background:#e8e8e8;display:inline-block}
@@ -156,30 +156,30 @@ table tr:nth-child(even) td{background:#fafafa}
       <li>地銀146行が計3,805件の採択を支援。<strong>静岡銀行225件がTOP</strong>、北國銀行は<strong>34件で37位</strong></li>
       <li>北陸3県（石川・富山・福井）では1,074件の採択があるが、北國銀行のシェアは<strong>わずか3.2%</strong></li>
       <li>同エリアの北陸銀行（86件）は北國の<strong>2.5倍</strong>、コンサル系が上位を席巻しており<strong>金融機関が取れていない案件が大量に存在</strong></li>
-      <li>SEVENRICH Accountingは45件申請・26件採択（<strong>採択率57.8%</strong>）の実績。制度別の採択パターン分析と勝ちパターンを確立済み</li>
+      <li>SEVENRICH Accountingは45件申請・26件採択（<strong>採択率57.8%</strong>）の実績。<strong>5制度中4制度で市場平均を大幅に上回る採択率</strong>（持続化+35pt、省力化+15pt、もの補+14pt、成長加速化+84pt）</li>
     </ul>
   </div>
 </div>
 
 <div class="kpi-strip">
   <div class="kpi-card">
-    <div class="kpi-value">46,529</div>
     <div class="kpi-label">4制度 全採択件数</div>
+    <div class="kpi-value">46,529</div>
     <div class="kpi-sub">うち金融機関記載あり 27,162件</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">8.2%</div>
     <div class="kpi-label">地銀の関与率</div>
+    <div class="kpi-value">8.2%</div>
     <div class="kpi-sub">3,805件 / 46,529件（146行）</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">34</div>
     <div class="kpi-label">北國銀行の支援件数</div>
+    <div class="kpi-value">34</div>
     <div class="kpi-sub">地銀146行中 37位</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">3.2%</div>
     <div class="kpi-label">北陸3県シェア</div>
+    <div class="kpi-value">3.2%</div>
     <div class="kpi-sub">1,074件中 34件</div>
   </div>
 </div>
@@ -421,38 +421,42 @@ table tr:nth-child(even) td{background:#fafafa}
 
 <div class="kpi-strip">
   <div class="kpi-card">
-    <div class="kpi-value">45</div>
     <div class="kpi-label">総申請件数</div>
+    <div class="kpi-value">45</div>
     <div class="kpi-sub">5制度横断</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">26</div>
     <div class="kpi-label">採択件数</div>
+    <div class="kpi-value">26</div>
     <div class="kpi-sub">採択率 57.8%</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">86%</div>
-    <div class="kpi-label">持続化補助金 採択率</div>
-    <div class="kpi-sub">市場平均58-64%</div>
+    <div class="kpi-label">市場平均を上回る制度</div>
+    <div class="kpi-value">4 / 5</div>
+    <div class="kpi-sub">新事業進出のみ同水準</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-value">83%</div>
-    <div class="kpi-label">省力化補助金 採択率</div>
-    <div class="kpi-sub">市場平均66-69%</div>
+    <div class="kpi-label">最大超過幅</div>
+    <div class="kpi-value">+84pt</div>
+    <div class="kpi-sub">成長加速化（100% vs 市場16%）</div>
   </div>
 </div>
 
 <table>
-<thead><tr><th>制度</th><th>申請</th><th>採択</th><th>不採択</th><th>採択率</th><th>市場平均</th><th>差分</th></tr></thead>
+<thead><tr><th>制度</th><th>申請</th><th>採択</th><th>不採択</th><th>SEVENRICH<br>採択率</th><th>市場平均<br>採択率</th><th>差分</th><th>市場平均の出典</th></tr></thead>
 <tbody>
-<tr><td>省力化投資補助金</td><td>6</td><td>5</td><td>1</td><td><strong>83.3%</strong></td><td>66-69%</td><td><span class="badge badge-ok">+14pt</span></td></tr>
-<tr><td>小規模事業者持続化補助金</td><td>7</td><td>6</td><td>1</td><td><strong>85.7%</strong></td><td>58-64%</td><td><span class="badge badge-ok">+22pt</span></td></tr>
-<tr><td>ものづくり補助金</td><td>23</td><td>11</td><td>12</td><td><strong>47.8%</strong></td><td>30%台</td><td><span class="badge badge-ok">+15pt</span></td></tr>
-<tr><td>中小企業成長加速化補助金</td><td>1</td><td>1</td><td>0</td><td><strong>100%</strong></td><td>16%台</td><td><span class="badge badge-ok">+84pt</span></td></tr>
-<tr><td>新事業進出補助金</td><td>8</td><td>3</td><td>5</td><td>37.5%</td><td>37%</td><td><span class="badge badge-c">±0</span></td></tr>
-<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>45</td><td>26</td><td>19</td><td>57.8%</td><td>—</td><td>—</td></tr>
+<tr><td>省力化投資補助金</td><td>6</td><td>5</td><td>1</td><td><strong>83.3%</strong></td><td>61.0〜68.5%</td><td><span class="badge badge-ok">+15pt</span></td><td>公式 第1〜3回採択結果</td></tr>
+<tr><td>小規模事業者持続化補助金</td><td>7</td><td>6</td><td>1</td><td><strong>85.7%</strong></td><td>48.1〜51.1%</td><td><span class="badge badge-ok">+35pt</span></td><td>中小企業庁 第17・18回</td></tr>
+<tr><td>ものづくり補助金</td><td>23</td><td>11</td><td>12</td><td><strong>47.8%</strong></td><td>31.8〜34.1%</td><td><span class="badge badge-ok">+14pt</span></td><td>中小企業庁 第19〜21次</td></tr>
+<tr><td>中小企業成長加速化補助金</td><td>1</td><td>1</td><td>0</td><td><strong>100%</strong></td><td>16.3%</td><td><span class="badge badge-ok">+84pt</span></td><td>中小企業庁 第1回</td></tr>
+<tr><td>新事業進出補助金</td><td>8</td><td>3</td><td>5</td><td>37.5%</td><td>37.2%</td><td><span class="badge badge-c">±0</span></td><td>中小機構 第1回</td></tr>
+<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>45</td><td>26</td><td>19</td><td>57.8%</td><td>—</td><td>—</td><td>—</td></tr>
 </tbody>
 </table>
+
+<div class="info-box">
+  <strong>市場採択率の出典:</strong> 各制度の公式採択結果発表（中小企業庁・中小機構）における申請件数・採択件数から算出。SEVENRICHの申請対象回（2024〜2025年公募分）と同時期の数値を使用。
+</div>
 
 <h3 class="subsection-title">SEVENRICHが確立した「4つの採択ドライバー」</h3>
 
@@ -545,7 +549,7 @@ table tr:nth-child(even) td{background:#fafafa}
 <div class="strat-card">
   <div class="strat-num">FACT 04</div>
   <div class="strat-title">SEVENRICHの勝ちパターンがある</div>
-  <div class="strat-body">45件の申請実績から採択ドライバーを体系化済み。制度別の「型」と加点戦略を持っており、全制度で市場平均を上回る採択率。このノウハウを北國銀行の顧客基盤に展開する。</div>
+  <div class="strat-body">45件の申請実績から採択ドライバーを体系化済み。制度別の「型」と加点戦略を持っており、5制度中4制度で市場平均を大幅に上回る採択率（持続化85.7% vs 市場48%、もの補47.8% vs 市場32%等）。このノウハウを北國銀行の顧客基盤に展開する。</div>
 </div>
 </div>
 
