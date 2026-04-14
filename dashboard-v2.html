@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>地銀×補助金支援 市場分析レポート</title>
+<style>
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#1a1a1a;background:#fff;line-height:1.7;margin:0}
+html{font-size:15px}
+#sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-bottom:1px solid #ccc;padding:12px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#sticky-nav .nav-label{font-size:0.72rem;font-weight:700;color:#777;letter-spacing:0.05em;margin-right:4px;white-space:nowrap}
+.pill{display:inline-block;padding:5px 16px;font-size:0.78rem;font-weight:600;color:#555;text-decoration:none;border:1px solid #ccc;border-radius:999px;transition:all 0.2s ease;white-space:nowrap}
+.pill:hover,.pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+#main{max-width:960px;margin:0 auto;padding:40px 48px 80px}
+.report-header{border-bottom:2px solid #1a1a1a;padding-bottom:20px;margin-bottom:32px}
+.report-header h1{font-size:1.6rem;font-weight:700;line-height:1.3;margin:0 0 4px}
+.report-header .subtitle{font-size:0.9rem;color:#555;margin-bottom:16px}
+.report-header .summary-box{background:#f7f7f7;border:1px solid #ddd;padding:16px 20px;margin-top:16px}
+.report-header .summary-box h3{font-size:0.85rem;font-weight:700;margin:0 0 10px}
+.report-header .summary-box ul{padding-left:20px;font-size:0.82rem;margin:0}
+.report-header .summary-box li{margin-bottom:4px}
+h2.section-title{font-size:1.2rem;font-weight:700;border-bottom:1px solid #999;padding-bottom:6px;margin-top:48px;margin-bottom:20px}
+h3.subsection-title{font-size:1.0rem;font-weight:700;margin-top:32px;margin-bottom:12px;padding-left:10px;border-left:3px solid #555}
+h4{font-size:0.9rem;font-weight:700;margin-top:20px;margin-bottom:8px}
+p{margin-bottom:10px;font-size:0.88rem}
+ul,ol{margin-bottom:10px;padding-left:22px;font-size:0.88rem}
+ul li,ol li{margin-bottom:3px}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:0.82rem}
+table th,table td{border:1px solid #bbb;padding:7px 10px;text-align:left;vertical-align:top}
+table th{background:#f0f0f0;font-weight:700;white-space:nowrap}
+table td{background:#fff}
+table tr:nth-child(even) td{background:#fafafa}
+.badge{display:inline-block;padding:2px 10px;font-size:0.72rem;font-weight:700;border-radius:999px;letter-spacing:0.03em}
+.badge-a{background:#1a1a1a;color:#fff}
+.badge-b{background:#555;color:#fff}
+.badge-c{background:#ccc;color:#333}
+.badge-ok{background:#d4edda;color:#155724}
+.badge-warn{background:#fff3cd;color:#856404}
+.badge-info{background:#d1ecf1;color:#0c5460}
+.highlight-box{background:#f7f7f7;border:1px solid #ddd;padding:14px 18px;margin:12px 0 20px;font-size:0.85rem}
+.note-box{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#78350f}
+.info-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#1e3a5f}
+.report-footer{border-top:1px solid #999;margin-top:48px;padding-top:16px;font-size:0.78rem;color:#777}
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ddd;border:1px solid #ddd;margin:20px 0 32px}
+.kpi-card{background:#fff;padding:20px 16px;text-align:center}
+.kpi-card .kpi-label{font-size:0.72rem;color:#777;letter-spacing:0.05em;margin-bottom:4px}
+.kpi-card .kpi-value{font-size:2rem;font-weight:700;line-height:1}
+.kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:4px}
+.score-bar{display:inline-flex;align-items:center;gap:6px}
+.score-fill{height:10px;background:#1a1a1a;display:inline-block}
+.score-empty{height:10px;background:#e8e8e8;display:inline-block}
+.score-num{font-size:0.78rem;font-weight:700;min-width:22px;text-align:right}
+.trend-row{display:flex;align-items:center;gap:12px;margin:8px 0}
+.trend-bar-wrap{flex:1;height:20px;background:#e8e8e8;position:relative}
+.trend-bar-fill{height:100%;background:#1a1a1a;position:absolute;left:0;top:0}
+.trend-label{font-size:0.78rem;min-width:160px;text-align:right}
+.trend-value{font-size:0.78rem;font-weight:700;min-width:50px}
+.tier-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:24px}
+.tier-card{border:1px solid #ddd;padding:14px 16px}
+.tier-card .tc-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:6px}
+.tier-card .tc-name{font-size:0.88rem;font-weight:700}
+.tier-card .tc-loc{font-size:0.72rem;color:#777}
+.tier-card .tc-body{font-size:0.78rem;color:#555;line-height:1.6}
+.strat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin:16px 0}
+.strat-card{border:1px solid #ddd;padding:16px 18px}
+.strat-card .strat-num{font-size:0.72rem;color:#999;font-weight:700;margin-bottom:4px}
+.strat-card .strat-title{font-size:0.92rem;font-weight:700;margin-bottom:8px}
+.strat-card .strat-body{font-size:0.8rem;color:#555;line-height:1.6}
+.flow{display:flex;align-items:center;gap:0;margin:20px 0;flex-wrap:wrap;justify-content:center}
+.flow-step{background:#f0f0f0;border:1px solid #ccc;padding:10px 18px;font-size:0.82rem;font-weight:600;text-align:center;min-width:120px}
+.flow-step.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.flow-arrow{font-size:1.2rem;color:#999;padding:0 4px}
+.matrix-wrap{overflow-x:auto;margin:16px 0 24px}
+.matrix{border-collapse:collapse;font-size:0.75rem;width:100%;min-width:700px}
+.matrix th,.matrix td{border:1px solid #ccc;padding:6px 8px;text-align:center;vertical-align:middle}
+.matrix th{background:#f0f0f0;font-weight:700;font-size:0.72rem}
+.matrix td.bank-name{text-align:left;font-weight:600;white-space:nowrap;background:#fff}
+.matrix .cell-yes{background:#1a1a1a;color:#fff;font-weight:700}
+.matrix .cell-partial{background:#999;color:#fff}
+.matrix .cell-no{background:#fafafa;color:#ddd}
+.gap-chart{margin:16px 0}
+.gap-row{display:flex;align-items:center;margin:6px 0;font-size:0.82rem}
+.gap-label{min-width:140px;font-weight:600}
+.gap-bar{height:22px;display:flex;align-items:center;border-radius:2px}
+.gap-bar-hk{background:#cc3333;opacity:0.8}
+.gap-bar-avg{background:#1a1a1a;opacity:0.6}
+.gap-bar-top{background:#1a1a1a}
+.gap-legend{display:flex;gap:20px;margin:10px 0;font-size:0.75rem;color:#555}
+.gap-legend span{display:flex;align-items:center;gap:4px}
+.gap-legend .dot{width:12px;height:12px;display:inline-block}
+.case-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(440px,1fr));gap:12px;margin:16px 0}
+.case-card{border:1px solid #ddd;padding:14px 16px}
+.case-card .cc-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:4px}
+.case-card .cc-title{font-size:0.85rem;font-weight:700;line-height:1.4}
+.case-card .cc-body{font-size:0.78rem;color:#555;line-height:1.6;margin-top:6px}
+.case-card .cc-tag{font-size:0.7rem;margin-top:6px}
+.compare-table{width:100%;font-size:0.82rem}
+.compare-table th{background:#f0f0f0;text-align:center;padding:8px 10px}
+.compare-table td{padding:8px 10px;text-align:center}
+.compare-table .col-hk{background:#fff5f5}
+.compare-table .col-top{background:#f0fdf4}
+@media(max-width:640px){
+  #main{padding:24px 20px 60px}
+  .report-header h1{font-size:1.3rem}
+  h2.section-title{font-size:1.05rem}
+  table{font-size:0.78rem}
+  table th,table td{padding:5px 7px}
+  #sticky-nav{padding:10px 12px;gap:6px}
+  .pill{padding:4px 12px;font-size:0.72rem}
+  .kpi-strip{grid-template-columns:repeat(2,1fr)}
+  .strat-grid{grid-template-columns:1fr}
+  .case-grid{grid-template-columns:1fr}
+}
+@media print{
+  #sticky-nav{display:none}
+  #main{padding:0;max-width:100%}
+  body{font-size:10pt}
+  .report-header h1{font-size:16pt}
+  h2.section-title{font-size:13pt;page-break-after:avoid}
+  h3.subsection-title{font-size:11pt;page-break-after:avoid}
+  table{font-size:8pt;page-break-inside:avoid}
+  table th,table td{padding:3px 5px}
+  .highlight-box,.note-box,.info-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table th{background:#f0f0f0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .kpi-strip{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div id="sticky-nav">
+  <span class="nav-label">SECTIONS</span>
+  <a href="#overview" class="pill active">概況</a>
+  <a href="#ranking" class="pill">地銀ランキング</a>
+  <a href="#group-ranking" class="pill">グループ込み</a>
+  <a href="#revenue" class="pill">売上推定</a>
+  <a href="#hokukoku" class="pill">北國銀行Gap</a>
+  <a href="#hokuriku" class="pill">北陸競合</a>
+  <a href="#themes" class="pill">採択テーマ</a>
+  <a href="#cases" class="pill">採択事例</a>
+  <a href="#sevenrich" class="pill">SEVENRICH実績</a>
+  <a href="#proposal" class="pill">提案</a>
+  <a href="#appendix" class="pill">付録</a>
+</div>
+
+<div id="main">
+
+<!-- ============================================================ -->
+<!-- SECTION 0: HEADER -->
+<!-- ============================================================ -->
+<section id="overview">
+<div class="report-header">
+  <h1>地銀×補助金支援 市場分析レポート</h1>
+  <p class="subtitle">補助金採択事例データベース 4制度・27,162件の全数分析 | 2026-04-13</p>
+  <div class="summary-box">
+    <h3>エグゼクティブサマリー</h3>
+    <ul>
+      <li>補助金採択事例4制度（ものづくり/大規模成長投資/成長加速化/新事業進出）の公開データから、支援金融機関を全数抽出・ランキング化</li>
+      <li>地銀146行が計3,805件の採択を支援。<strong>静岡銀行225件がTOP</strong>、北國銀行は<strong>34件で37位</strong></li>
+      <li>北陸3県（石川・富山・福井）では1,074件の採択があるが、北國銀行のシェアは<strong>3.2%</strong></li>
+      <li>同エリアの北陸銀行（86件）は北國の<strong>2.5倍</strong>、コンサル系が上位を席巻しており<strong>金融機関が取れていない案件が大量に存在</strong></li>
+      <li>SEVENRICH Accountingは45件申請・26件採択（<strong>採択率57.8%</strong>）の実績。<strong>5制度中4制度で市場平均を大幅に上回る採択率</strong>（持続化+35pt、省力化+15pt、もの補+14pt、成長加速化+84pt）</li>
+    </ul>
+  </div>
+</div>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">4制度 全採択件数</div>
+    <div class="kpi-value">46,529</div>
+    <div class="kpi-sub">うち金融機関記載あり 27,162件</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">地銀の関与率</div>
+    <div class="kpi-value">8.2%</div>
+    <div class="kpi-sub">3,805件 / 46,529件（146行）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">北國銀行の支援件数</div>
+    <div class="kpi-value">34</div>
+    <div class="kpi-sub">地銀146行中 37位</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">北陸3県シェア</div>
+    <div class="kpi-value">3.2%</div>
+    <div class="kpi-sub">1,074件中 34件</div>
+  </div>
+</div>
+
+<div class="note-box">
+  <strong>対象外制度:</strong> 小規模事業者持続化補助金（金融機関カラムなし）、省力化投資補助金・一般型（認定支援機関名が全件空欄）。これらを含めると市場はさらに大きい。分析対象データの詳細は<a href="#appendix">付録</a>を参照。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: RANKING -->
+<!-- ============================================================ -->
+<section id="ranking">
+<h2 class="section-title">地銀 補助金支援ランキング TOP30</h2>
+
+<p>全国146地銀のうち、採択支援件数上位30行。<strong>静岡エリアが異常に強く</strong>、TOP10中3行が静岡。製造業集積地の地銀が圧倒的。</p>
+
+<table>
+<thead>
+<tr><th>順位</th><th>銀行名</th><th>合計</th><th>ものづくり</th><th>大規模成長</th><th>成長加速化</th><th>新事業進出</th></tr>
+</thead>
+<tbody>
+<tr><td>1</td><td><strong>静岡銀行</strong></td><td><strong>225</strong></td><td>211</td><td>6</td><td>7</td><td>1</td></tr>
+<tr><td>2</td><td><strong>名古屋銀行</strong></td><td><strong>206</strong></td><td>205</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>3</td><td>八十二銀行</td><td>141</td><td>133</td><td>5</td><td>3</td><td>0</td></tr>
+<tr><td>4</td><td>常陽銀行</td><td>118</td><td>114</td><td>3</td><td>1</td><td>0</td></tr>
+<tr><td>5</td><td>京都銀行</td><td>118</td><td>109</td><td>3</td><td>6</td><td>0</td></tr>
+<tr><td>6</td><td>大分銀行</td><td>99</td><td>96</td><td>2</td><td>1</td><td>0</td></tr>
+<tr><td>7</td><td>山形銀行</td><td>94</td><td>91</td><td>1</td><td>2</td><td>0</td></tr>
+<tr><td>8</td><td>中国銀行</td><td>91</td><td>86</td><td>0</td><td>5</td><td>0</td></tr>
+<tr><td>9</td><td>伊予銀行</td><td>87</td><td>83</td><td>2</td><td>2</td><td>0</td></tr>
+<tr><td>10</td><td>北陸銀行</td><td>81</td><td>77</td><td>1</td><td>3</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>11</td><td>清水銀行</td><td>79</td><td>77</td><td>1</td><td>1</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>12</td><td>北海道銀行</td><td>78</td><td>75</td><td>1</td><td>2</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>13</td><td>百十四銀行</td><td>78</td><td>77</td><td>0</td><td>1</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>14</td><td>十六銀行</td><td>75</td><td>73</td><td>0</td><td>2</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>15</td><td>足利銀行</td><td>65</td><td>61</td><td>1</td><td>3</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>16</td><td>群馬銀行</td><td>64</td><td>55</td><td>4</td><td>3</td><td>2</td></tr>
+<tr style="background:#f0f0f0"><td>17</td><td>愛知銀行</td><td>62</td><td>62</td><td>0</td><td>0</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>18</td><td>福井銀行</td><td>61</td><td>57</td><td>1</td><td>3</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>19</td><td>紀陽銀行</td><td>61</td><td>57</td><td>1</td><td>3</td><td>0</td></tr>
+<tr style="background:#f0f0f0"><td>20</td><td>東和銀行</td><td>59</td><td>58</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td colspan="7" style="text-align:center;color:#777">...</td></tr>
+<tr style="background:#fff5f5;font-weight:700"><td>37</td><td>北國銀行 &#9733;</td><td>34</td><td>31</td><td>1</td><td>2</td><td>0</td></tr>
+</tbody>
+</table>
+
+<div class="info-box">
+  <strong>注目ポイント:</strong> TOP10はすべて100件超。北國銀行の34件はTOP10平均（124件）の<strong>約1/4</strong>となっている。同エリアの北陸銀行（10位・81件）も力を入れている領域。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.5: GROUP RANKING -->
+<!-- ============================================================ -->
+<section id="group-ranking">
+<h2 class="section-title">銀行グループ会社込みランキング</h2>
+
+<p>一部の地銀はグループ内のコンサルティング会社が認定支援機関として補助金支援を行っている。<strong>グループ会社を含めると順位が大きく変動する銀行が存在。</strong></p>
+
+<div class="note-box">
+  <strong>グループ会社の特定方法:</strong> 採択データ中の認定支援機関名から、銀行の子会社・関連コンサル会社を特定。本レポートではデータ中に実績が確認できた5行のグループ会社を反映。他行にもグループコンサル会社が存在するが（京都総研コンサルティング、TRYパートナーズ、七十七リサーチ&amp;コンサルティング等）、採択データ中に実績が出現しなかったため未反映。
+</div>
+
+<h3 class="subsection-title">順位変動が大きい銀行</h3>
+
+<table>
+<thead><tr><th>銀行名</th><th>単体順位</th><th>単体件数</th><th>グループ会社</th><th>G社件数</th><th>合計件数</th><th>G込順位</th><th>順位変動</th></tr></thead>
+<tbody>
+<tr style="background:#f0fdf4"><td><strong>北洋銀行</strong></td><td>22位</td><td>58</td><td>北海道共創パートナーズ</td><td><strong>+90</strong></td><td><strong>148</strong></td><td><strong>3位</strong></td><td><span class="badge badge-ok">+19</span></td></tr>
+<tr style="background:#f0fdf4"><td><strong>横浜銀行</strong></td><td>54位</td><td>20</td><td>浜銀総合研究所</td><td><strong>+33</strong></td><td><strong>53</strong></td><td><strong>27位</strong></td><td><span class="badge badge-ok">+27</span></td></tr>
+<tr style="background:#f0fdf4"><td><strong>南都銀行</strong></td><td>35位</td><td>36</td><td>南都経済研究所</td><td><strong>+24</strong></td><td><strong>60</strong></td><td><strong>21位</strong></td><td><span class="badge badge-ok">+14</span></td></tr>
+<tr style="background:#f0fdf4"><td><strong>群馬銀行</strong></td><td>15位</td><td>72</td><td>ぐんぎんコンサルティング</td><td><strong>+9</strong></td><td><strong>81</strong></td><td><strong>12位</strong></td><td><span class="badge badge-ok">+3</span></td></tr>
+<tr style="background:#f0fdf4"><td><strong>静岡銀行</strong></td><td>1位</td><td>229</td><td>静銀経営コンサルティング</td><td>+3</td><td>232</td><td>1位</td><td><span class="badge badge-c">±0</span></td></tr>
+<tr style="background:#fff5f5"><td>北國銀行 &#9733;</td><td>41位</td><td>34</td><td>CCイノベーション（実績なし）</td><td>+0</td><td>34</td><td>42位</td><td><span class="badge badge-c">±0</span></td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">グループ込み TOP20</h3>
+
+<table>
+<thead><tr><th>G込順位</th><th>銀行名</th><th>合計</th><th>単体</th><th>G社</th><th>もの</th><th>大規模</th><th>加速化</th><th>新事業</th><th>グループ会社名</th></tr></thead>
+<tbody>
+<tr style="background:#f0fdf4"><td>1</td><td><strong>静岡銀行</strong></td><td><strong>232</strong></td><td>229</td><td><strong>+3</strong></td><td>214</td><td>10</td><td>7</td><td>1</td><td>静銀経営コンサルティング</td></tr>
+<tr><td>2</td><td><strong>名古屋銀行</strong></td><td><strong>207</strong></td><td>207</td><td>—</td><td>205</td><td>2</td><td>0</td><td>0</td><td>—</td></tr>
+<tr style="background:#f0fdf4"><td>3</td><td><strong>北洋銀行</strong></td><td><strong>148</strong></td><td>58</td><td><strong>+90</strong></td><td>148</td><td>0</td><td>0</td><td>0</td><td>北海道共創パートナーズ</td></tr>
+<tr><td>4</td><td>八十二銀行</td><td>144</td><td>144</td><td>—</td><td>133</td><td>8</td><td>3</td><td>0</td><td>—</td></tr>
+<tr><td>5</td><td>常陽銀行</td><td>120</td><td>120</td><td>—</td><td>114</td><td>5</td><td>1</td><td>0</td><td>—</td></tr>
+<tr><td>6</td><td>京都銀行</td><td>119</td><td>119</td><td>—</td><td>109</td><td>4</td><td>6</td><td>0</td><td>—</td></tr>
+<tr><td>7</td><td>大分銀行</td><td>100</td><td>100</td><td>—</td><td>96</td><td>3</td><td>1</td><td>0</td><td>—</td></tr>
+<tr><td>8</td><td>中国銀行</td><td>97</td><td>97</td><td>—</td><td>86</td><td>6</td><td>5</td><td>0</td><td>—</td></tr>
+<tr><td>9</td><td>山形銀行</td><td>94</td><td>94</td><td>—</td><td>91</td><td>1</td><td>2</td><td>0</td><td>—</td></tr>
+<tr><td>10</td><td>伊予銀行</td><td>88</td><td>88</td><td>—</td><td>83</td><td>3</td><td>2</td><td>0</td><td>—</td></tr>
+<tr><td>11</td><td>北陸銀行</td><td>86</td><td>86</td><td>—</td><td>77</td><td>6</td><td>3</td><td>0</td><td>—</td></tr>
+<tr style="background:#f0fdf4"><td>12</td><td>群馬銀行</td><td>81</td><td>72</td><td><strong>+9</strong></td><td>67</td><td>8</td><td>4</td><td>2</td><td>ぐんぎんコンサルティング</td></tr>
+<tr><td>13</td><td>清水銀行</td><td>79</td><td>79</td><td>—</td><td>77</td><td>1</td><td>1</td><td>0</td><td>—</td></tr>
+<tr><td>14</td><td>北海道銀行</td><td>78</td><td>78</td><td>—</td><td>75</td><td>1</td><td>2</td><td>0</td><td>道銀地域総合研究所（実績なし）</td></tr>
+<tr><td>15</td><td>十六銀行</td><td>78</td><td>78</td><td>—</td><td>73</td><td>3</td><td>2</td><td>0</td><td>十六総合研究所（実績なし）</td></tr>
+<tr><td>16</td><td>百十四銀行</td><td>78</td><td>78</td><td>—</td><td>77</td><td>0</td><td>1</td><td>0</td><td>—</td></tr>
+<tr><td>17</td><td>足利銀行</td><td>68</td><td>68</td><td>—</td><td>61</td><td>4</td><td>3</td><td>0</td><td>—</td></tr>
+<tr><td>18</td><td>愛知銀行</td><td>62</td><td>62</td><td>—</td><td>62</td><td>0</td><td>0</td><td>0</td><td>—</td></tr>
+<tr><td>19</td><td>紀陽銀行</td><td>62</td><td>62</td><td>—</td><td>57</td><td>2</td><td>3</td><td>0</td><td>—</td></tr>
+<tr><td>20</td><td>福井銀行</td><td>61</td><td>61</td><td>—</td><td>57</td><td>1</td><td>3</td><td>0</td><td>福井C&amp;C（実績なし）</td></tr>
+<tr style="background:#f0fdf4"><td>21</td><td>南都銀行</td><td>60</td><td>36</td><td><strong>+24</strong></td><td>57</td><td>3</td><td>0</td><td>0</td><td>南都経済研究所</td></tr>
+<tr><td colspan="10" style="text-align:center;color:#777">...</td></tr>
+<tr><td>27</td><td>横浜銀行</td><td>53</td><td>20</td><td><strong>+33</strong></td><td>47</td><td>5</td><td>1</td><td>0</td><td>浜銀総合研究所</td></tr>
+<tr><td colspan="10" style="text-align:center;color:#777">...</td></tr>
+<tr style="background:#fff5f5;font-weight:700"><td>42</td><td>北國銀行 &#9733;</td><td>34</td><td>34</td><td>—</td><td>31</td><td>1</td><td>2</td><td>0</td><td>CCイノベーション（実績なし）</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+  <strong>示唆:</strong>
+  <ul>
+    <li><strong>北洋銀行</strong>は単体22位→グループ込み3位に急浮上。100%子会社「北海道共創パートナーズ」が銀行本体（58件）を大きく上回る90件を支援。<strong>グループ会社にコンサル機能を持たせる戦略が最も成功している事例。</strong></li>
+    <li><strong>横浜銀行</strong>は単体54位→グループ込み27位。銀行本体はわずか20件だが、浜銀総合研究所がシンクタンク機能で33件を担当。</li>
+    <li>多くの地銀がグループコンサル会社を持つが、<strong>採択データに名前が出てくるのはわずか5行のみ</strong>。他行のグループ会社（京都総研コンサルティング、TRYパートナーズ等）は採択データの「認定支援機関名」に登場しない＝銀行本体名義で一本化している可能性。</li>
+    <li><strong>北國銀行のCCイノベーション</strong>（北國FH傘下）は補助金支援の実績がデータに出てこない。QRインベストメントも同様。グループ資源の補助金領域への活用余地が大きい。</li>
+  </ul>
+</div>
+
+<h3 class="subsection-title">データに実績が確認できた地銀グループ会社一覧</h3>
+<table>
+<thead><tr><th>銀行名</th><th>グループ会社（正式名称）</th><th>データ内件数</th><th>設立</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>北洋銀行</td><td>株式会社北海道共創パートナーズ</td><td><strong>90件</strong></td><td>—</td><td>100%子会社。北海道全域で採択支援</td></tr>
+<tr><td>横浜銀行</td><td>株式会社浜銀総合研究所</td><td><strong>33件</strong></td><td>1988年</td><td>シンクタンク兼コンサル</td></tr>
+<tr><td>南都銀行</td><td>一般財団法人 南都経済研究所</td><td><strong>24件</strong></td><td>—</td><td>奈良県内の中小企業支援</td></tr>
+<tr><td>群馬銀行</td><td>ぐんぎんコンサルティング株式会社</td><td><strong>9件</strong></td><td>2018年</td><td>認定支援機関登録済み</td></tr>
+<tr><td>静岡銀行</td><td>静銀経営コンサルティング株式会社</td><td><strong>3件</strong></td><td>—</td><td>銀行本体229件に対し補完的</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">データに実績なし（銀行本体で対応）の地銀グループ会社</h3>
+<table>
+<thead><tr><th>銀行名</th><th>グループ会社</th><th>主な機能</th></tr></thead>
+<tbody>
+<tr><td>京都銀行</td><td>京都総研コンサルティング</td><td>補助金・事業承継支援</td></tr>
+<tr><td>山形銀行</td><td>TRYパートナーズ（2020年設立）</td><td>補助金・助成金申請支援</td></tr>
+<tr><td>伊予銀行</td><td>いよぎん地域経済研究センター（IRC）</td><td>コンサルティング</td></tr>
+<tr><td>十六銀行</td><td>十六総合研究所（2013年設立）</td><td>経営コンサル</td></tr>
+<tr><td>福井銀行</td><td>福井キャピタル&amp;コンサルティング（2021年設立）</td><td>認定支援機関</td></tr>
+<tr><td>七十七銀行</td><td>七十七リサーチ&amp;コンサルティング（2018年設立）</td><td>認定支援機関</td></tr>
+<tr><td>北海道銀行</td><td>道銀地域総合研究所</td><td>シンクタンク</td></tr>
+<tr><td>北陸銀行</td><td>ほくほくコンサルティング</td><td>M&amp;A・事業承継</td></tr>
+<tr><td>大分銀行</td><td>大銀経済経営研究所（DKK）</td><td>経営支援</td></tr>
+<tr><td>北國銀行</td><td>CCイノベーション（2021年設立）</td><td>DX支援・経営コンサル</td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1.6: REVENUE ESTIMATION -->
+<!-- ============================================================ -->
+<section id="revenue">
+<h2 class="section-title">補助金事業 推定売上（フェルミ推定）</h2>
+
+<h3 class="subsection-title">推定ロジック</h3>
+<div class="highlight-box">
+  <strong>前提条件:</strong>
+  <ul>
+    <li><strong>ものづくり補助金:</strong> 平均補助金額 約1,000万円（実績値: 第16〜18次で819〜945万円/件）× コンサルフィー率10% = <strong>100万円/件</strong></li>
+    <li><strong>新事業進出補助金:</strong> 平均補助金額 約2,500万円（最頻申請レンジ: 2,000〜2,500万円）× コンサルフィー率10% = <strong>250万円/件</strong></li>
+    <li><strong>大規模成長投資・成長加速化:</strong> 補助額が数億〜数十億と桁違いのため別途表示（フィー構造が異なる）</li>
+  </ul>
+  <strong>留意点:</strong> 銀行が「認定支援機関」として確認書を発行しただけのケース（実質的な申請支援はコンサル会社が担当）では、銀行の取り分は確認書発行手数料（5〜10万円程度）のみ。以下の推定値は「全件を銀行が自ら支援した場合」の上限値であり、実態はこの30〜70%程度と推定。
+</div>
+
+<h3 class="subsection-title">地銀TOP20 推定売上ランキング</h3>
+<p>ものづくり補助金 + 新事業進出補助金の合計。大規模成長投資・成長加速化は件数のみ参考表示。</p>
+
+<table>
+<thead><tr><th>順位</th><th>銀行名</th><th>推定売上<br>（単体）</th><th>推定売上<br>（G込み）</th><th>もの補助<br>@100万</th><th>新事業<br>@250万</th><th>大規模成長<br>（件数）</th><th>成長加速化<br>（件数）</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>静岡銀行</strong></td><td><strong>2.14億</strong></td><td>2.14億</td><td>211件</td><td>1件</td><td>10件</td><td>7件</td></tr>
+<tr><td>2</td><td><strong>名古屋銀行</strong></td><td><strong>2.05億</strong></td><td>2.05億</td><td>205件</td><td>0件</td><td>2件</td><td>0件</td></tr>
+<tr><td>3</td><td>北洋銀行</td><td>0.56億</td><td><strong>1.49億</strong></td><td>148件(G込)</td><td>0件</td><td>0件</td><td>2件</td></tr>
+<tr><td>4</td><td>八十二銀行</td><td><strong>1.33億</strong></td><td>1.33億</td><td>133件</td><td>0件</td><td>8件</td><td>3件</td></tr>
+<tr><td>5</td><td>常陽銀行</td><td><strong>1.14億</strong></td><td>1.14億</td><td>114件</td><td>0件</td><td>5件</td><td>1件</td></tr>
+<tr><td>6</td><td>京都銀行</td><td><strong>1.09億</strong></td><td>1.09億</td><td>109件</td><td>0件</td><td>4件</td><td>6件</td></tr>
+<tr><td>7</td><td>大分銀行</td><td><strong>0.96億</strong></td><td>0.96億</td><td>96件</td><td>0件</td><td>3件</td><td>1件</td></tr>
+<tr><td>8</td><td>山形銀行</td><td><strong>0.91億</strong></td><td>0.91億</td><td>91件</td><td>0件</td><td>1件</td><td>2件</td></tr>
+<tr><td>9</td><td>中国銀行</td><td><strong>0.86億</strong></td><td>0.86億</td><td>86件</td><td>0件</td><td>6件</td><td>5件</td></tr>
+<tr><td>10</td><td>伊予銀行</td><td><strong>0.83億</strong></td><td>0.83億</td><td>83件</td><td>0件</td><td>3件</td><td>2件</td></tr>
+<tr><td>11</td><td>清水銀行</td><td><strong>0.77億</strong></td><td>0.77億</td><td>77件</td><td>0件</td><td>1件</td><td>1件</td></tr>
+<tr><td>12</td><td>百十四銀行</td><td><strong>0.77億</strong></td><td>0.77億</td><td>77件</td><td>0件</td><td>0件</td><td>1件</td></tr>
+<tr><td>13</td><td>北陸銀行</td><td><strong>0.77億</strong></td><td>0.77億</td><td>77件</td><td>0件</td><td>6件</td><td>3件</td></tr>
+<tr><td>14</td><td>十六銀行</td><td><strong>0.73億</strong></td><td>0.73億</td><td>73件</td><td>0件</td><td>3件</td><td>2件</td></tr>
+<tr><td>15</td><td>群馬銀行</td><td>0.60億</td><td><strong>0.72億</strong></td><td>67件(G込)</td><td>2件</td><td>8件(G込)</td><td>4件(G込)</td></tr>
+<tr><td>16</td><td>愛知銀行</td><td><strong>0.62億</strong></td><td>0.62億</td><td>62件</td><td>0件</td><td>0件</td><td>0件</td></tr>
+<tr><td>17</td><td>足利銀行</td><td><strong>0.61億</strong></td><td>0.61億</td><td>61件</td><td>0件</td><td>4件</td><td>3件</td></tr>
+<tr><td>18</td><td>東和銀行</td><td><strong>0.58億</strong></td><td>0.58億</td><td>58件</td><td>0件</td><td>0件</td><td>1件</td></tr>
+<tr><td>19</td><td>福井銀行</td><td><strong>0.57億</strong></td><td>0.57億</td><td>57件</td><td>0件</td><td>1件</td><td>3件</td></tr>
+<tr><td>20</td><td>紀陽銀行</td><td><strong>0.57億</strong></td><td>0.57億</td><td>57件</td><td>0件</td><td>2件</td><td>3件</td></tr>
+<tr><td colspan="8" style="text-align:center;color:#777">...</td></tr>
+<tr style="background:#fff5f5;font-weight:700"><td>—</td><td>北國銀行 &#9733;</td><td>0.31億</td><td>0.31億</td><td>31件</td><td>0件</td><td>1件</td><td>2件</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">北國銀行の売上ポテンシャル</h3>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">現在の推定売上</div>
+    <div class="kpi-value">3,100万</div>
+    <div class="kpi-sub">31件 × 100万（もの補助のみ）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">確認書のみケース考慮</div>
+    <div class="kpi-value">930〜2,170万</div>
+    <div class="kpi-sub">実態は上限値の30〜70%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">TOP10平均レベル</div>
+    <div class="kpi-value">1.0億超</div>
+    <div class="kpi-sub">静岡2.1億 / 八十二1.3億</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">100件達成時</div>
+    <div class="kpi-value">1.0億</div>
+    <div class="kpi-sub">もの補100件 × 100万</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>売上推定の解釈:</strong>
+  <ul>
+    <li><strong>「確認書だけ銀行」パターン:</strong> コンサル会社が実質的に申請書を作成し、銀行は認定支援機関として確認書にハンコを押すだけのケースが一定割合存在。この場合、銀行の売上はほぼゼロ（確認書発行手数料5〜10万円のみ）</li>
+    <li><strong>自行で完結できるか否か</strong>が売上のカギ。上位行（静岡・名古屋）は自行の法人営業部隊が申請支援まで一貫対応していると推定。北國銀行がSEVENRICHと組むことで、コンサル内製化に近い体制を構築できる</li>
+  </ul>
+</div>
+
+<h3 class="subsection-title">大型補助金の売上推定：競合料金からの逆算</h3>
+
+<p>成長加速化補助金・大規模成長投資補助金は、船井総研・F&amp;Mの実際の料金体系から1件あたりの売上を推定できる。</p>
+
+<div class="note-box">
+  <strong>出典:</strong> SEVENRICH Accounting社 提案資料「20260212_CCIさま.pptx」5ページ目（競合動向：船井総研・F&amp;M）
+</div>
+
+<table>
+<thead><tr><th></th><th>船井総研</th><th>F&amp;M</th></tr></thead>
+<tbody>
+<tr><td colspan="3" style="background:#f0f0f0;font-weight:700">成長加速化補助金</td></tr>
+<tr><td>着手金</td><td>35万円〜</td><td>会員30万 / 非会員50万</td></tr>
+<tr><td>採択報酬</td><td>補助金額の8〜12%</td><td>会員8% / 非会員10%（下限2,000万〜上限3,500万）</td></tr>
+<tr><td>受給時報酬</td><td>300万円</td><td>—</td></tr>
+<tr><td>事業化報告支援</td><td>—</td><td>504万円（約7年間）</td></tr>
+<tr style="font-weight:700;background:#f7f7f7"><td>1件あたり合計推定</td><td>約2,300〜5,300万</td><td>約2,500〜4,100万</td></tr>
+<tr><td colspan="3" style="background:#f0f0f0;font-weight:700">大規模成長投資補助金</td></tr>
+<tr><td>着手金</td><td>35万円〜</td><td>会員30万 / 非会員50万</td></tr>
+<tr><td>採択報酬</td><td>補助金額の8〜12%</td><td>一律4,000万</td></tr>
+<tr><td>受給時報酬</td><td>150万円 × 3年分</td><td>—</td></tr>
+<tr><td>事業化報告支援</td><td>—</td><td>636万円（4〜6年間）</td></tr>
+<tr style="font-weight:700;background:#f7f7f7"><td>1件あたり合計推定</td><td>約4,500万〜数億</td><td>約4,700万〜</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+  <strong>フェルミ推定の単価設定:</strong>
+  <ul>
+    <li><strong>成長加速化補助金:</strong> 1件あたり約<strong>3,000万円</strong>（船井・F&amp;Mの中間値。補助額5億×8%=4,000万 vs 下限2,000万の間）</li>
+    <li><strong>大規模成長投資補助金:</strong> 1件あたり約<strong>4,500万円</strong>（F&amp;Mの一律4,000万+事業化報告636万を参考）</li>
+  </ul>
+</div>
+
+<h3 class="subsection-title">全制度込み 推定売上ランキング TOP15</h3>
+<p>4制度すべてを含む推定。大型補助金は件数が少ないが1件の単価が桁違いに大きいため、順位が大きく変動する。</p>
+
+<table>
+<thead><tr><th>順位</th><th>銀行名</th><th>もの補助<br>@100万</th><th>新事業<br>@250万</th><th>成長加速化<br>@3,000万</th><th>大規模成長<br>@4,500万</th><th>全制度<br>推定合計</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>広島銀行</strong></td><td>36件 / 0.36億</td><td>0件</td><td>6件 / 1.80億</td><td><strong>18件 / 8.10億</strong></td><td><strong>10.26億</strong></td></tr>
+<tr><td>2</td><td><strong>静岡銀行</strong></td><td>211件 / 2.11億</td><td>1件 / 0.03億</td><td>7件 / 2.10億</td><td>10件 / 4.50億</td><td><strong>8.74億</strong></td></tr>
+<tr><td>3</td><td><strong>八十二銀行</strong></td><td>133件 / 1.33億</td><td>0件</td><td>3件 / 0.90億</td><td>8件 / 3.60億</td><td><strong>5.83億</strong></td></tr>
+<tr><td>4</td><td><strong>京都銀行</strong></td><td>109件 / 1.09億</td><td>0件</td><td>6件 / 1.80億</td><td>4件 / 1.80億</td><td><strong>4.69億</strong></td></tr>
+<tr><td>5</td><td><strong>群馬銀行</strong></td><td>55件 / 0.55億</td><td>2件 / 0.05億</td><td>3件 / 0.90億</td><td><strong>12件 / 5.40億</strong></td><td><strong>6.90億</strong></td></tr>
+<tr><td>6</td><td><strong>中国銀行</strong></td><td>86件 / 0.86億</td><td>0件</td><td>5件 / 1.50億</td><td>6件 / 2.70億</td><td><strong>5.06億</strong></td></tr>
+<tr><td>7</td><td><strong>常陽銀行</strong></td><td>114件 / 1.14億</td><td>0件</td><td>1件 / 0.30億</td><td>5件 / 2.25億</td><td><strong>3.69億</strong></td></tr>
+<tr><td>8</td><td><strong>滋賀銀行</strong></td><td>42件 / 0.42億</td><td>0件</td><td>3件 / 0.90億</td><td>6件 / 2.70億</td><td><strong>4.02億</strong></td></tr>
+<tr><td>9</td><td><strong>北陸銀行</strong></td><td>77件 / 0.77億</td><td>0件</td><td>3件 / 0.90億</td><td>6件 / 2.70億</td><td><strong>4.37億</strong></td></tr>
+<tr><td>10</td><td><strong>名古屋銀行</strong></td><td>205件 / 2.05億</td><td>0件</td><td>0件</td><td>2件 / 0.90億</td><td><strong>2.95億</strong></td></tr>
+<tr><td>11</td><td><strong>足利銀行</strong></td><td>61件 / 0.61億</td><td>0件</td><td>3件 / 0.90億</td><td>4件 / 1.80億</td><td><strong>3.31億</strong></td></tr>
+<tr><td>12</td><td><strong>四国銀行</strong></td><td>45件 / 0.45億</td><td>0件</td><td>2件 / 0.60億</td><td>5件 / 2.25億</td><td><strong>3.30億</strong></td></tr>
+<tr><td colspan="7" style="text-align:center;color:#777">...</td></tr>
+<tr style="background:#fff5f5;font-weight:700"><td>—</td><td>北國銀行 &#9733;</td><td>31件 / 0.31億</td><td>0件</td><td>2件 / 0.60億</td><td>1件 / 0.45億</td><td>1.36億</td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+  <strong>大型補助金が地銀の売上構造を大きく変える:</strong>
+  <ul>
+    <li><strong>広島銀行</strong>が全制度込みで1位に浮上。ものづくりでは20位圏外だが、大規模成長投資18件が圧倒的（推定8.1億）。<strong>件数は少なくても大型案件1件のフィーがものづくり45件分に相当。</strong></li>
+    <li><strong>群馬銀行</strong>もものづくりでは15位だが、大規模成長投資12件（推定5.4億）で全制度5位に。</li>
+    <li><strong>名古屋銀行</strong>はものづくり特化（205件）だが大型案件が少なく、全制度込みでは10位に後退。</li>
+    <li><strong>北國銀行</strong>: 成長加速化2件+大規模成長投資1件を加えると<strong>推定1.36億</strong>。もの補のみの0.31億から大幅に増加。ただし実態は銀行が確認書のみ発行し、コンサル会社がフィーを得ている可能性あり。</li>
+  </ul>
+</div>
+
+<h3 class="subsection-title">競合の事業モデル比較：船井総研 vs F&amp;M</h3>
+<table>
+<thead><tr><th></th><th>船井総研</th><th>F&amp;M</th></tr></thead>
+<tbody>
+<tr><td>体制</td><td>コンサル約1,000名。「成長戦略株式会社」を2025年4月に本体合併し補助金チーム統合</td><td>補助金専門チーム。1社4名体制。全国220行庫以上の金融機関と連携</td></tr>
+<tr><td>モデル</td><td>「100億企業化PJ」を軸に経営コンサル+補助金の一体提供。補助金を入口に経営全般支援へ展開</td><td>月額3万円SaaS型バックオフィス支援（F&amp;M Club）。金融機関連携223行庫で案件母集団を確保</td></tr>
+<tr><td>強み</td><td>業種特化コンサル×エコシステム運営。バックキャスト型ロードマップ→経営者コミュニティ→月次支援に接続</td><td>金融機関連携の規模、低単価SaaS、データ蓄積による申請ノウハウ量産</td></tr>
+<tr><td>収益構造</td><td>高単価（採択報酬8〜12%+受給時報酬）。コンサル報酬との合算で顧客あたり売上が大きい</td><td>広く薄く（SaaS月額3万+成功報酬）。金融機関チャネルで母数を稼ぐ</td></tr>
+</tbody>
+</table>
+
+<div class="info-box">
+  <strong>SEVENRICHの競争優位:</strong> 船井総研は自社コンサル網で高単価・深耕型。F&amp;Mは金融機関チャネルで量産型。SEVENRICHが北國銀行と組むことで、<strong>F&amp;Mモデル（金融機関チャネル×量産）の強みを取り込みつつ、船井総研モデル（高品質コンサル）の採択率を実現</strong>できるポジション。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: HOKUKOKU GAP -->
+<!-- ============================================================ -->
+<section id="hokukoku">
+<h2 class="section-title">北國銀行のギャップ分析</h2>
+
+<h3 class="subsection-title">地銀TOP10 vs 北國銀行 比較</h3>
+
+<div class="gap-chart">
+  <div class="gap-legend">
+    <span><span class="dot" style="background:#cc3333"></span> 北國銀行（34件）</span>
+    <span><span class="dot" style="background:#1a1a1a;opacity:0.6"></span> 地銀TOP10平均（124件）</span>
+    <span><span class="dot" style="background:#1a1a1a"></span> 静岡銀行（225件）</span>
+  </div>
+  <div class="gap-row"><span class="gap-label">静岡銀行</span><div class="gap-bar gap-bar-top" style="width:100%;max-width:450px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">225件</span></div></div>
+  <div class="gap-row"><span class="gap-label">名古屋銀行</span><div class="gap-bar gap-bar-top" style="width:91.6%;max-width:412px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">206件</span></div></div>
+  <div class="gap-row"><span class="gap-label">八十二銀行</span><div class="gap-bar gap-bar-top" style="width:62.7%;max-width:282px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">141件</span></div></div>
+  <div class="gap-row"><span class="gap-label">常陽銀行</span><div class="gap-bar gap-bar-top" style="width:52.4%;max-width:236px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">118件</span></div></div>
+  <div class="gap-row"><span class="gap-label">京都銀行</span><div class="gap-bar gap-bar-top" style="width:52.4%;max-width:236px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">118件</span></div></div>
+  <div class="gap-row"><span class="gap-label">北陸銀行</span><div class="gap-bar gap-bar-avg" style="width:36%;max-width:162px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">81件</span></div></div>
+  <div class="gap-row"><span class="gap-label">福井銀行</span><div class="gap-bar gap-bar-avg" style="width:27.1%;max-width:122px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">61件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><strong>北國銀行 &#9733;</strong></span><div class="gap-bar gap-bar-hk" style="width:15.1%;max-width:68px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">34件</span></div></div>
+</div>
+
+<h3 class="subsection-title">北國銀行 vs 上位地銀の倍率</h3>
+<table>
+<thead><tr><th>比較対象</th><th>件数</th><th>北國比</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>静岡銀行（1位）</td><td>225件</td><td><strong>6.6倍</strong></td><td>静岡県は製造業集積+県内信金も上位多数</td></tr>
+<tr><td>名古屋銀行（2位）</td><td>206件</td><td><strong>6.1倍</strong></td><td>愛知の中小製造業を網羅的に支援</td></tr>
+<tr><td>八十二銀行（3位）</td><td>141件</td><td><strong>4.1倍</strong></td><td>長野県の精密機械・食品加工</td></tr>
+<tr><td>北陸銀行（10位）</td><td>81件</td><td><strong>2.4倍</strong></td><td>同エリア競合。北陸3県で北國を圧倒</td></tr>
+<tr><td>福井銀行（18位）</td><td>61件</td><td><strong>1.8倍</strong></td><td>福井1県のみで北國を上回る</td></tr>
+</tbody>
+</table>
+
+<div class="note-box">
+  <strong>ポイント:</strong> 北國銀行は北陸3県の主力行でありながら、補助金支援では北陸銀行の半分以下の実績となっている。本格化により伸びる領域。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: HOKURIKU COMPETITION -->
+<!-- ============================================================ -->
+<section id="hokuriku">
+<h2 class="section-title">北陸3県 競合環境</h2>
+
+<p>北陸3県（石川・富山・福井）の採択案件1,074件のうち、支援機関のシェアを分析。<strong>北國銀行は7位</strong>。コンサル系が上位を占め、金融機関が取りきれていない市場。</p>
+
+<table>
+<thead><tr><th>順位</th><th>支援機関名</th><th>件数</th><th>シェア</th><th>タイプ</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>北陸銀行</strong></td><td>73</td><td>6.8%</td><td><span class="badge badge-a">銀行</span></td></tr>
+<tr><td>2</td><td>石川県産業創出支援機構</td><td>67</td><td>6.2%</td><td><span class="badge badge-c">公的機関</span></td></tr>
+<tr><td>3</td><td>福井銀行</td><td>59</td><td>5.5%</td><td><span class="badge badge-a">銀行</span></td></tr>
+<tr><td>4</td><td>ジエック経営コンサルタント</td><td>41</td><td>3.8%</td><td><span class="badge badge-b">コンサル</span></td></tr>
+<tr><td>5</td><td>バンカーズアンドアソシエイツ</td><td>41</td><td>3.8%</td><td><span class="badge badge-b">コンサル</span></td></tr>
+<tr><td>6</td><td>GKコンサルティング</td><td>39</td><td>3.6%</td><td><span class="badge badge-b">コンサル</span></td></tr>
+<tr style="background:#fff5f5;font-weight:700"><td>7</td><td>北國銀行 &#9733;</td><td>34</td><td>3.2%</td><td><span class="badge badge-a">銀行</span></td></tr>
+<tr><td>8</td><td>福井県商工会連合会</td><td>34</td><td>3.2%</td><td><span class="badge badge-c">商工会</span></td></tr>
+<tr><td>9</td><td>富山県商工会連合会</td><td>33</td><td>3.1%</td><td><span class="badge badge-c">商工会</span></td></tr>
+<tr><td>10</td><td>富山銀行</td><td>30</td><td>2.8%</td><td><span class="badge badge-a">銀行</span></td></tr>
+</tbody>
+</table>
+
+<div class="highlight-box">
+  <strong>構造的な課題:</strong> 北陸3県TOP10のうち銀行は4行（北陸・福井・北國・富山）だが、それらを合計しても196件（18.2%）。残り81.8%はコンサル・商工会・公的機関が取っている。<strong>金融機関が補助金支援を本業として取り組めば、巨大な市場を奪取できる。</strong>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: THEMES -->
+<!-- ============================================================ -->
+<section id="themes">
+<h2 class="section-title">採択されやすい事業テーマ</h2>
+
+<h3 class="subsection-title">地銀TOP10の採択テーマ構成</h3>
+<p>上位地銀が支援した採択案件を事業テーマ別に分類。<strong>製造・生産性向上が50-70%</strong>で最大。次いでDX・IT導入、省力化・自動化が主要テーマ。</p>
+
+<div class="trend-row"><span class="trend-label">製造・生産性向上</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:58%"></div></div><span class="trend-value">58%</span></div>
+<div class="trend-row"><span class="trend-label">DX・IT導入</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:16%"></div></div><span class="trend-value">16%</span></div>
+<div class="trend-row"><span class="trend-label">省力化・自動化</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:18%"></div></div><span class="trend-value">18%</span></div>
+<div class="trend-row"><span class="trend-label">新製品・新技術開発</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:12%"></div></div><span class="trend-value">12%</span></div>
+<div class="trend-row"><span class="trend-label">食品・農水産</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:5%"></div></div><span class="trend-value">5%</span></div>
+<div class="trend-row"><span class="trend-label">脱炭素・環境</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:4%"></div></div><span class="trend-value">4%</span></div>
+<div class="trend-row"><span class="trend-label">医療・介護</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:7%"></div></div><span class="trend-value">7%</span></div>
+<div class="trend-row"><span class="trend-label">建設・建築</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:5%"></div></div><span class="trend-value">5%</span></div>
+<div class="trend-row"><span class="trend-label">海外展開</span><div class="trend-bar-wrap"><div class="trend-bar-fill" style="width:2%"></div></div><span class="trend-value">2%</span></div>
+
+<h3 class="subsection-title">上位地銀の代表的な採択事例</h3>
+
+<div class="case-grid">
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">食品製造機械の高度化と短納期化への取組</span><span class="badge badge-ok">静岡銀行</span></div>
+  <div class="cc-body">食品製造業の省力化に寄与する食品製造機械の開発。製造・省力化のダブルテーマ。</div>
+  <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">製造・省力化</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">多様化するかりんとうの生産体制構築</span><span class="badge badge-ok">名古屋銀行</span></div>
+  <div class="cc-body">消費者ニーズ多様化に対応した食品製造の生産性向上。地域中小製造業の典型的採択パターン。</div>
+  <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">食品×製造</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">金型加工の省人化とユニット品開発の強化</span><span class="badge badge-ok">八十二銀行</span></div>
+  <div class="cc-body">生産方式改善による省人化。設備投資+工程改善の組み合わせ。</div>
+  <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">省力化×製造</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">核酸医薬候補物質の製造システム構築</span><span class="badge badge-ok">北陸銀行</span></div>
+  <div class="cc-body">製薬企業の開発支援。高付加価値な先端製造。北陸エリアの同業他行もこのレベルを支援。</div>
+  <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">医療×製造</span></div>
+</div>
+</div>
+
+<div class="info-box">
+  <strong>採択パターン:</strong> 「特別なことをしている」のではなく、<strong>地元中小企業の設備投資・DX化を丁寧に拾っている</strong>。製造業の生産性向上、DX導入、省力化 ── これらは北陸3県にも大量に存在する案件テーマ。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: TOP BANK CASES -->
+<!-- ============================================================ -->
+<section id="cases">
+<h2 class="section-title">地銀TOP10 事業テーマ比較マトリクス</h2>
+
+<div class="matrix-wrap">
+<table class="matrix">
+<thead>
+<tr>
+<th>銀行名</th><th>件数</th><th>製造・生産性</th><th>DX・IT</th><th>省力化</th><th>新製品開発</th><th>食品</th><th>建設</th><th>脱炭素</th><th>医療</th><th>海外</th>
+</tr>
+</thead>
+<tbody>
+<tr><td class="bank-name">静岡銀行</td><td><strong>225</strong></td><td class="cell-yes">114</td><td class="cell-partial">42</td><td class="cell-partial">34</td><td class="cell-partial">26</td><td>14</td><td>7</td><td>12</td><td class="cell-partial">40</td><td>4</td></tr>
+<tr><td class="bank-name">名古屋銀行</td><td><strong>206</strong></td><td class="cell-yes">137</td><td class="cell-partial">32</td><td class="cell-partial">49</td><td class="cell-partial">36</td><td>8</td><td>10</td><td>10</td><td>3</td><td>1</td></tr>
+<tr><td class="bank-name">八十二銀行</td><td><strong>141</strong></td><td class="cell-yes">84</td><td>17</td><td class="cell-partial">27</td><td>18</td><td>4</td><td>6</td><td>2</td><td>8</td><td>1</td></tr>
+<tr><td class="bank-name">常陽銀行</td><td><strong>118</strong></td><td class="cell-yes">64</td><td>19</td><td class="cell-partial">29</td><td>12</td><td>10</td><td>3</td><td>2</td><td>6</td><td>1</td></tr>
+<tr><td class="bank-name">京都銀行</td><td><strong>118</strong></td><td class="cell-yes">84</td><td>14</td><td>20</td><td>19</td><td>8</td><td>4</td><td>3</td><td>9</td><td>2</td></tr>
+<tr><td class="bank-name">北陸銀行</td><td><strong>81</strong></td><td class="cell-yes">53</td><td class="cell-partial">20</td><td>13</td><td>7</td><td>4</td><td>5</td><td>3</td><td>8</td><td>1</td></tr>
+<tr style="background:#fff5f5"><td class="bank-name"><strong>北國銀行 &#9733;</strong></td><td><strong>34</strong></td><td>19</td><td>6</td><td>5</td><td>4</td><td>3</td><td>1</td><td>1</td><td>2</td><td>0</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="note-box">
+  北國銀行の事業テーマ構成比率は上位地銀とほぼ同じ（製造56%、DX18%）。<strong>「やれていない」のではなく「数が少ない」だけ。</strong>仕組みを作れば一気にスケールする。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 6: SEVENRICH -->
+<!-- ============================================================ -->
+<section id="sevenrich">
+<h2 class="section-title">SEVENRICH Accounting 実績</h2>
+
+<h3 class="subsection-title">制度別 申請・採択実績</h3>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">総申請件数</div>
+    <div class="kpi-value">45</div>
+    <div class="kpi-sub">5制度横断</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">採択件数</div>
+    <div class="kpi-value">26</div>
+    <div class="kpi-sub">採択率 57.8%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">市場平均を上回る制度</div>
+    <div class="kpi-value">4 / 5</div>
+    <div class="kpi-sub">新事業進出のみ同水準</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">最大超過幅</div>
+    <div class="kpi-value">+84pt</div>
+    <div class="kpi-sub">成長加速化（100% vs 市場16%）</div>
+  </div>
+</div>
+
+<table>
+<thead><tr><th>制度</th><th>申請</th><th>採択</th><th>不採択</th><th>SEVENRICH<br>採択率</th><th>市場平均<br>採択率</th><th>差分</th><th>市場平均の出典</th></tr></thead>
+<tbody>
+<tr><td>省力化投資補助金</td><td>6</td><td>5</td><td>1</td><td><strong>83.3%</strong></td><td>61.0〜68.5%</td><td><span class="badge badge-ok">+15pt</span></td><td>公式 第1〜3回採択結果</td></tr>
+<tr><td>小規模事業者持続化補助金</td><td>7</td><td>6</td><td>1</td><td><strong>85.7%</strong></td><td>48.1〜51.1%</td><td><span class="badge badge-ok">+35pt</span></td><td>中小企業庁 第17・18回</td></tr>
+<tr><td>ものづくり補助金</td><td>23</td><td>11</td><td>12</td><td><strong>47.8%</strong></td><td>31.8〜34.1%</td><td><span class="badge badge-ok">+14pt</span></td><td>中小企業庁 第19〜21次</td></tr>
+<tr><td>中小企業成長加速化補助金</td><td>1</td><td>1</td><td>0</td><td><strong>100%</strong></td><td>16.3%</td><td><span class="badge badge-ok">+84pt</span></td><td>中小企業庁 第1回</td></tr>
+<tr><td>新事業進出補助金</td><td>8</td><td>3</td><td>5</td><td>37.5%</td><td>37.2%</td><td><span class="badge badge-c">±0</span></td><td>中小機構 第1回</td></tr>
+<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>45</td><td>26</td><td>19</td><td>57.8%</td><td>—</td><td>—</td><td>—</td></tr>
+</tbody>
+</table>
+
+<div class="info-box">
+  <strong>市場採択率の出典:</strong> 各制度の公式採択結果発表（中小企業庁・中小機構）における申請件数・採択件数から算出。SEVENRICHの申請対象回（2024〜2025年公募分）と同時期の数値を使用。
+</div>
+
+<h3 class="subsection-title">SEVENRICHが確立した「4つの採択ドライバー」</h3>
+
+<div class="strat-grid">
+<div class="strat-card">
+  <div class="strat-num">DRIVER 01</div>
+  <div class="strat-title">計画書の精度と投資妥当性</div>
+  <div class="strat-body">先端技術（AI・DX・IoT）の活用が審査上の加点に直結。投資回収期間3-5年以内、金融機関等の妥当性確認（確認書等）を必須化。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">DRIVER 02</div>
+  <div class="strat-title">事業実施・モニタリング体制</div>
+  <div class="strat-body">財務基盤・労務環境・モニタリング体制の3点。ローカルベンチマーク点数、法令対応した賃金台帳、認定支援機関確認書が鍵。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">DRIVER 03</div>
+  <div class="strat-title">制度と事業の構造的整合</div>
+  <div class="strat-body">制度趣旨と事業計画の合致性。もの補は「革新的開発」、省力化は「AI・機械化」、新事業進出は「既存強み×新領域」。制度ごとの"型"に合わせる力。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">DRIVER 04</div>
+  <div class="strat-title">加点の戦略的取得</div>
+  <div class="strat-body">加点0個 vs 4個で採択率は約2倍差。経営革新計画の承認・パートナーシップ構築宣言・DX認定・BCP策定等を事前に取得する戦略設計。</div>
+</div>
+</div>
+
+<h3 class="subsection-title">採択事例ハイライト（26件中）</h3>
+
+<div class="case-grid">
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">MARKETING AIによる新事業進出</span><span class="badge badge-ok">採択</span></div>
+  <div class="cc-body">TikTok広告業界トップ5の実績を「技術的裏付け」に転換。大手マーケ部門向けAI戦略支援。申請額3,000万円。</div>
+  <div class="cc-tag"><span class="badge badge-info">新事業進出補助金</span> <span class="badge badge-c">既存事業活用型AI開発</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">三輪素麺 北米市場開拓事業</span><span class="badge badge-ok">採択</span></div>
+  <div class="cc-body">国内最高峰ブランドの三輪素麺を北米向けにローカライズ。グローバル枠の政策適合性が決め手。申請額3,000万円。</div>
+  <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">伝統食品×海外展開</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">水産食品リーディングカンパニーへの挑戦</span><span class="badge badge-ok">採択</span></div>
+  <div class="cc-body">NMFグループ3社コンソーシアム。補助額4億4,500万円。バリューチェーン一貫型×国際認証が採択要因。</div>
+  <div class="cc-tag"><span class="badge badge-info">成長加速化補助金</span> <span class="badge badge-c">コンソーシアム×100億規模</span></div>
+</div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">産廃業の請求・行政報告DX化</span><span class="badge badge-ok">採択</span></div>
+  <div class="cc-body">産廃処理業特有の規制対応業務のDX化。業界特化型の課題設定が採択の決定打。申請額1,500万円。</div>
+  <div class="cc-tag"><span class="badge badge-info">省力化投資補助金</span> <span class="badge badge-c">業界特化バックオフィスDX</span></div>
+</div>
+</div>
+
+<h3 class="subsection-title">不採択パターン分析（共通要因）</h3>
+
+<div class="highlight-box">
+<ol>
+<li><strong>投資額が売上対比で過大</strong> — 実現性が低いと判断される</li>
+<li><strong>加点項目がゼロまたは1項目のみ</strong> — 相対評価で不利に</li>
+<li><strong>先端技術キーワードの欠如</strong> — AI・DX・IoT等が計画書にないと先進性評価が低下</li>
+<li><strong>自社課題（Why）の不在</strong> — 社会課題のみで経営力評価が低下</li>
+<li><strong>体制基盤の脆弱性</strong> — 一人会社、ローカルベンチマーク低スコア、書類不備</li>
+<li><strong>制度趣旨とのミスマッチ</strong> — オーダーメイド設備要件未充足、海外主軸で国内波及なし等</li>
+</ol>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: PROPOSAL -->
+<!-- ============================================================ -->
+<section id="proposal">
+<h2 class="section-title">提案：北國銀行×SEVENRICH Accounting</h2>
+
+<h3 class="subsection-title">なぜ北國銀行ならもっとできるのか</h3>
+
+<div class="strat-grid">
+<div class="strat-card">
+  <div class="strat-num">FACT 01</div>
+  <div class="strat-title">市場は十分に大きい</div>
+  <div class="strat-body">北陸3県だけで1,074件の採択実績。北國のシェア3.2%（34件）は、仮に10%に引き上げるだけで<strong>107件 = 現在の3倍超</strong>。上位地銀の水準に一気に並ぶ。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">FACT 02</div>
+  <div class="strat-title">競合は「専門家」ではない</div>
+  <div class="strat-body">北陸のTOP支援機関はコンサル・商工会が中心。金融機関としての信用力・顧客基盤・財務データへのアクセスは圧倒的な競争優位。認定支援機関確認書の発行権限も持つ。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">FACT 03</div>
+  <div class="strat-title">上位地銀がやっていることは再現可能</div>
+  <div class="strat-body">静岡銀行225件の中身は「地元中小企業の設備投資・DX案件の丁寧な拾い上げ」。特別なスキルではなく、<strong>仕組みと体制の問題</strong>。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">FACT 04</div>
+  <div class="strat-title">SEVENRICHの勝ちパターンがある</div>
+  <div class="strat-body">45件の申請実績から採択ドライバーを体系化済み。制度別の「型」と加点戦略を持っており、5制度中4制度で市場平均を大幅に上回る採択率（持続化85.7% vs 市場48%、もの補47.8% vs 市場32%等）。このノウハウを北國銀行の顧客基盤に展開する。</div>
+</div>
+</div>
+
+<h3 class="subsection-title">実行ステップ</h3>
+
+<div class="flow">
+  <div class="flow-step active">STEP 1<br><small>法人営業との<br>連携体制構築</small></div>
+  <span class="flow-arrow">&#9654;</span>
+  <div class="flow-step">STEP 2<br><small>補助金候補の<br>スクリーニング</small></div>
+  <span class="flow-arrow">&#9654;</span>
+  <div class="flow-step">STEP 3<br><small>SEVENRICH<br>申請支援</small></div>
+  <span class="flow-arrow">&#9654;</span>
+  <div class="flow-step">STEP 4<br><small>採択・実行<br>モニタリング</small></div>
+  <span class="flow-arrow">&#9654;</span>
+  <div class="flow-step">STEP 5<br><small>実績蓄積<br>横展開</small></div>
+</div>
+
+<div class="info-box">
+  <strong>目標:</strong> 北國銀行の補助金支援件数を現在の34件から<strong>年間100件超</strong>へ。北陸3県での金融機関シェアを3.2%から<strong>10%以上</strong>に引き上げ、地銀ランキングTOP15入りを目指す。
+</div>
+
+<div class="highlight-box">
+  <strong>次のアクション:</strong><br>
+  1. 北國銀行の法人顧客リストから補助金候補企業のスクリーニング<br>
+  2. SEVENRICH採択ドライバーに基づく「対象企業×最適制度」マッチング<br>
+  3. パイロットケース10件の選定と申請支援開始
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- APPENDIX -->
+<!-- ============================================================ -->
+<section id="appendix">
+<h2 class="section-title">付録：分析対象データの範囲</h2>
+
+<h3 class="subsection-title">市場分析の対象データ</h3>
+<p>補助金クラウドが公式採択一覧から構築した公開データベースを使用し、全数分析を実施。</p>
+<table>
+<thead><tr><th>制度</th><th>対象回</th><th>全採択件数</th><th>うち金融機関記載あり</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>ものづくり補助金</td><td>第1次〜第20次（全回）</td><td>44,792件</td><td>27,062件</td><td>補助金クラウド 採択事例DB</td></tr>
+<tr><td>大規模成長投資補助金</td><td>第1次〜第4次（全回）</td><td>412件</td><td>406件</td><td>同上</td></tr>
+<tr><td>成長加速化補助金</td><td>第1次</td><td>207件</td><td>199件</td><td>同上</td></tr>
+<tr><td>新事業進出補助金</td><td>第1次</td><td>1,118件</td><td>464件</td><td>同上</td></tr>
+<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>—</td><td>46,529件</td><td>27,162件</td><td>—</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">SEVENRICH Accounting 実績データの対象範囲</h3>
+<p>自社の申請・採択記録（全45件、2024〜2025年公募分）を独自分析。</p>
+<table>
+<thead><tr><th>制度</th><th>対象回</th><th>申請件数</th></tr></thead>
+<tbody>
+<tr><td>ものづくり補助金</td><td>第19次〜第21次</td><td>23件</td></tr>
+<tr><td>省力化投資補助金</td><td>第2回〜第4回 + 一般型第1次</td><td>6件</td></tr>
+<tr><td>小規模事業者持続化補助金</td><td>第17回〜第18回</td><td>7件</td></tr>
+<tr><td>新事業進出補助金</td><td>第1回〜第2回</td><td>8件</td></tr>
+<tr><td>成長加速化補助金</td><td>第1回</td><td>1件</td></tr>
+<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>2024〜2025年公募分</td><td>45件</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">市場採択率の出典</h3>
+<table>
+<thead><tr><th>制度</th><th>回次</th><th>申請件数</th><th>採択件数</th><th>採択率</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>ものづくり補助金</td><td>第19次</td><td>5,336</td><td>1,698</td><td>31.8%</td><td>中小企業庁 採択結果公表</td></tr>
+<tr><td>〃</td><td>第20次</td><td>2,453</td><td>825</td><td>33.6%</td><td>同上</td></tr>
+<tr><td>〃</td><td>第21次</td><td>1,872</td><td>638</td><td>34.1%</td><td>同上</td></tr>
+<tr><td>省力化投資補助金</td><td>第1回</td><td>1,809</td><td>1,240</td><td>68.5%</td><td>公式 採択結果一覧</td></tr>
+<tr><td>〃</td><td>第2回</td><td>1,160</td><td>707</td><td>61.0%</td><td>同上</td></tr>
+<tr><td>〃</td><td>第3回</td><td>2,775</td><td>1,854</td><td>66.8%</td><td>同上</td></tr>
+<tr><td>小規模事業者持続化補助金</td><td>第17回</td><td>23,365</td><td>11,928</td><td>51.1%</td><td>中小企業庁 採択結果公表</td></tr>
+<tr><td>〃</td><td>第18回</td><td>17,318</td><td>8,330</td><td>48.1%</td><td>同上</td></tr>
+<tr><td>新事業進出補助金</td><td>第1回</td><td>3,006</td><td>1,118</td><td>37.2%</td><td>中小機構 公式</td></tr>
+<tr><td>成長加速化補助金</td><td>第1回</td><td>1,270</td><td>207</td><td>16.3%</td><td>中小企業庁 採択結果公表</td></tr>
+</tbody>
+</table>
+</section>
+
+<footer class="report-footer">
+  地銀×補助金支援 市場分析ダッシュボード — 補助金クラウド採択事例データベース全数分析 — Generated 2026-04-14 — SEVENRICH Accounting × CCI
+</footer>
+
+</div>
+
+<script>
+const pills=document.querySelectorAll('.pill');
+const sections=document.querySelectorAll('section[id]');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      pills.forEach(p=>p.classList.remove('active'));
+      const active=document.querySelector(`.pill[href="#${entry.target.id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-80px 0px -80% 0px'});
+sections.forEach(s=>observer.observe(s));
+</script>
+</body>
+</html>
