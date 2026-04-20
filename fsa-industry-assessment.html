@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>業種別支援の着眼点 - 金融庁委託ガイド要約</title>
+<style>
+body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#1a1a1a;background:#fff;line-height:1.7;margin:0}
+html{font-size:15px}
+#sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-bottom:1px solid #ccc;padding:12px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+#sticky-nav .nav-label{font-size:0.72rem;font-weight:700;color:#777;letter-spacing:0.05em;margin-right:4px;white-space:nowrap}
+.pill{display:inline-block;padding:5px 16px;font-size:0.78rem;font-weight:600;color:#555;text-decoration:none;border:1px solid #ccc;border-radius:999px;transition:all 0.2s ease;white-space:nowrap}
+.pill:hover,.pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+#main{max-width:960px;margin:0 auto;padding:40px 48px 80px}
+.report-header{border-bottom:2px solid #1a1a1a;padding-bottom:20px;margin-bottom:32px}
+.report-header h1{font-size:1.6rem;font-weight:700;line-height:1.3;margin:0 0 4px}
+.report-header .subtitle{font-size:0.9rem;color:#555;margin-bottom:16px}
+.report-header .summary-box{background:#f7f7f7;border:1px solid #ddd;padding:16px 20px;margin-top:16px}
+.report-header .summary-box h3{font-size:0.85rem;font-weight:700;margin:0 0 10px}
+.report-header .summary-box ul{padding-left:20px;font-size:0.82rem;margin:0}
+.report-header .summary-box li{margin-bottom:4px}
+h2.section-title{font-size:1.2rem;font-weight:700;border-bottom:1px solid #999;padding-bottom:6px;margin-top:48px;margin-bottom:20px}
+h3.subsection-title{font-size:1.0rem;font-weight:700;margin-top:32px;margin-bottom:12px;padding-left:10px;border-left:3px solid #555}
+h4{font-size:0.9rem;font-weight:700;margin-top:20px;margin-bottom:8px}
+p{margin-bottom:10px;font-size:0.88rem}
+ul,ol{margin-bottom:10px;padding-left:22px;font-size:0.88rem}
+ul li,ol li{margin-bottom:3px}
+table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:0.82rem}
+table th,table td{border:1px solid #bbb;padding:7px 10px;text-align:left;vertical-align:top}
+table th{background:#f0f0f0;font-weight:700;white-space:nowrap}
+table td{background:#fff}
+table tr:nth-child(even) td{background:#fafafa}
+.badge{display:inline-block;padding:2px 10px;font-size:0.72rem;font-weight:700;border-radius:999px;letter-spacing:0.03em}
+.badge-a{background:#1a1a1a;color:#fff}
+.badge-b{background:#555;color:#fff}
+.badge-c{background:#ccc;color:#333}
+.badge-ok{background:#d4edda;color:#155724}
+.badge-warn{background:#fff3cd;color:#856404}
+.badge-info{background:#d1ecf1;color:#0c5460}
+.badge-danger{background:#f8d7da;color:#721c24}
+.highlight-box{background:#f7f7f7;border:1px solid #ddd;padding:14px 18px;margin:12px 0 20px;font-size:0.85rem}
+.note-box{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#78350f}
+.info-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#1e3a5f}
+.report-footer{border-top:1px solid #999;margin-top:48px;padding-top:16px;font-size:0.78rem;color:#777}
+.kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ddd;border:1px solid #ddd;margin:20px 0 32px}
+.kpi-card{background:#fff;padding:20px 16px;text-align:center}
+.kpi-card .kpi-label{font-size:0.72rem;color:#777;letter-spacing:0.05em;margin-bottom:4px}
+.kpi-card .kpi-value{font-size:1.8rem;font-weight:700;line-height:1}
+.kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:4px}
+.trend-row{display:flex;align-items:center;gap:12px;margin:8px 0}
+.trend-bar-wrap{flex:1;height:20px;background:#e8e8e8;position:relative}
+.trend-bar-fill{height:100%;background:#1a1a1a;position:absolute;left:0;top:0}
+.trend-label{font-size:0.78rem;min-width:160px;text-align:right}
+.trend-value{font-size:0.78rem;font-weight:700;min-width:50px}
+.check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
+.check-card{border:1px solid #ddd;padding:14px 16px}
+.check-card .ck-num{font-size:0.72rem;color:#999;font-weight:700;margin-bottom:4px}
+.check-card .ck-title{font-size:0.92rem;font-weight:700;margin-bottom:8px}
+.check-card .ck-body{font-size:0.8rem;color:#555;line-height:1.6}
+.func-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.func-card{border:1px solid #ddd;padding:16px 18px;text-align:center}
+.func-card .fc-icon{font-size:2rem;margin-bottom:8px}
+.func-card .fc-title{font-size:1.0rem;font-weight:700;margin-bottom:8px}
+.func-card .fc-body{font-size:0.78rem;color:#555;line-height:1.6;text-align:left}
+.flow{display:flex;align-items:center;gap:0;margin:20px 0;flex-wrap:wrap;justify-content:center}
+.flow-step{background:#f0f0f0;border:1px solid #ccc;padding:10px 18px;font-size:0.82rem;font-weight:600;text-align:center;min-width:100px}
+.flow-step.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.flow-arrow{font-size:1.2rem;color:#999;padding:0 4px}
+.matrix-wrap{overflow-x:auto;margin:16px 0 24px}
+.matrix{border-collapse:collapse;font-size:0.78rem;width:100%;min-width:600px}
+.matrix th,.matrix td{border:1px solid #ccc;padding:6px 8px;text-align:center;vertical-align:middle}
+.matrix th{background:#f0f0f0;font-weight:700;font-size:0.72rem}
+.matrix td.label-cell{text-align:left;font-weight:600;white-space:nowrap;background:#fff}
+.matrix .cell-high{background:#1a1a1a;color:#fff;font-weight:700}
+.matrix .cell-mid{background:#999;color:#fff}
+.matrix .cell-low{background:#e8e8e8;color:#555}
+@media(max-width:640px){
+  #main{padding:24px 20px 60px}
+  .report-header h1{font-size:1.3rem}
+  h2.section-title{font-size:1.05rem}
+  table{font-size:0.78rem}
+  table th,table td{padding:5px 7px}
+  #sticky-nav{padding:10px 12px;gap:6px}
+  .pill{padding:4px 12px;font-size:0.72rem}
+  .kpi-strip{grid-template-columns:repeat(2,1fr)}
+  .check-grid{grid-template-columns:1fr}
+  .func-grid{grid-template-columns:1fr}
+}
+@media print{
+  #sticky-nav{display:none}
+  #main{padding:0;max-width:100%}
+  body{font-size:10pt}
+  .report-header h1{font-size:16pt}
+  h2.section-title{font-size:13pt;page-break-after:avoid}
+  h3.subsection-title{font-size:11pt;page-break-after:avoid}
+  table{font-size:8pt;page-break-inside:avoid}
+  table th,table td{padding:3px 5px}
+  .highlight-box,.note-box,.info-box{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  table th{background:#f0f0f0!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .kpi-strip{page-break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<div id="sticky-nav">
+  <span class="nav-label">SECTIONS</span>
+  <a href="#overview" class="pill active">概要</a>
+  <a href="#construction" class="pill">建設業</a>
+  <a href="#wholesale" class="pill">卸売業</a>
+  <a href="#manufacturing" class="pill">製造業</a>
+  <a href="#corewo" class="pill">COREWO活用</a>
+</div>
+
+<div id="main">
+
+<!-- ============================================================ -->
+<!-- HEADER -->
+<!-- ============================================================ -->
+<section id="overview">
+<div class="report-header">
+  <h1>業種別支援の着眼点</h1>
+  <p class="subtitle">金融庁委託 / 日本生産性本部作成 | 金融機関職員向け業種別目利きガイド要約 | 2026-04-20</p>
+  <div class="summary-box">
+    <h3>このレポートについて</h3>
+    <ul>
+      <li>金融庁が日本生産性本部に委託して作成した、<strong>金融機関職員が中小企業を訪問する際の業種別チェックポイント集</strong></li>
+      <li>本レポートでは<strong>建設業（訪問時編）・卸売業（訪問時編）・製造業（工場見学編）</strong>の3業種を要約</li>
+      <li>各業種ごとに「何を見るか」「何を聞くか」「どう判断するか」の実践的な着眼点が体系的にまとまっている</li>
+      <li>中小企業経営者自身が「金融機関はこう見ている」と理解するための教材としても有用</li>
+    </ul>
+  </div>
+</div>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">対象業種数</div>
+    <div class="kpi-value">3</div>
+    <div class="kpi-sub">建設・卸売・製造</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">チェック項目数</div>
+    <div class="kpi-value">40+</div>
+    <div class="kpi-sub">訪問時・工場見学時の着眼点</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">出典</div>
+    <div class="kpi-value">金融庁</div>
+    <div class="kpi-sub">日本生産性本部 委託作成</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">対象読者</div>
+    <div class="kpi-value">営業担当</div>
+    <div class="kpi-sub">金融機関の法人担当者向け</div>
+  </div>
+</div>
+
+<div class="note-box">
+  <strong>なぜこの資料が重要か:</strong> 公的機関が出している網羅的・実践的な資料。中小企業経営者は資金調達コンサルや「あなたのCFO」系サービスに頼る前に、金融機関がどういう目線で見ているかをこの資料で把握すべき。金融機関の営業担当にとっても、支店の先輩・上司の口伝より網羅性がある教科書。<strong>商社志望者は日本貿易会へ、お金借りたい人は金融庁へ。</strong>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 1: CONSTRUCTION -->
+<!-- ============================================================ -->
+<section id="construction">
+<h2 class="section-title">中小建設業の目利き <span class="badge badge-a">訪問時編</span></h2>
+
+<p>会社を訪問する際に、どのようなことに目を凝らし、何を聞けばよいか分からないという質問が多い。企業の事業性や経営改善の可能性を判断するのに必要な、基本的なポイントをまとめる。</p>
+
+<h3 class="subsection-title">1. 工事施工体制</h3>
+
+<div class="check-grid">
+  <div class="check-card">
+    <div class="ck-num">TYPE A</div>
+    <div class="ck-title">集権型</div>
+    <div class="ck-body">トップや特定の人物が受注額・予算額・取引先・建材・下請業者を選定。現場は<strong>"受け身"</strong>で施工を行うことに専念する運営が中心。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">TYPE B</div>
+    <div class="ck-title">分権型</div>
+    <div class="ck-body">請負った仕事は原則として<strong>現場代理人</strong>が取引先・建材屋・下請業者を選定。場合により営業の一部も現場に任せる運営もある。</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <strong>着眼ポイント:</strong>
+  <ul>
+    <li><strong>集権型</strong>: 資材価格や発注先・業者選定まで本社やトップの決定権。一定の管理がなされる反面、受注する力がないと下請業者が離れていく。請負金額の低い工事等では現場の負担が増え、士気低下による収益力の悪化に繋がるリスク</li>
+    <li><strong>分権型</strong>: 実行予算を現場代理人が作成しても「予算会議」等にかけられるか確認。長所は人的ネットワーク構築・現場の共有意識、短所は予算や原価管理が甘くなりがち</li>
+    <li>金融機関は企業に「管理」を求めがちだが、あらゆる「管理」を強いると長所を殺す。<strong>集権型・分権型それぞれの長所・短所を理解し、事実確認を積み重ねて改善に着手すること</strong></li>
+  </ul>
+</div>
+
+<h3 class="subsection-title">2. 工事種別・受注形態</h3>
+
+<p>どのような工事種別の仕事が多いか？ 建設業にも様々な工事種別があり（電気工事・屋根工事・塗装工事等）、土木工事にも道園工事・解体工事・舗装工事等に区分される。</p>
+
+<h4>受注経路マトリクス</h4>
+<div class="matrix-wrap">
+<table class="matrix">
+<thead>
+<tr><th></th><th colspan="2">受注経路</th></tr>
+<tr><th></th><th>官公庁工事（道路やインフラ等）</th><th>民間工事（商業施設・住宅等）</th></tr>
+</thead>
+<tbody>
+<tr><td class="label-cell">元請の割合</td><td>何割くらい？</td><td>何割くらい？</td></tr>
+<tr><td class="label-cell">下請の割合</td><td>何割くらい？</td><td>何割くらい？</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="info-box">
+  <strong>なぜ重要か:</strong> 工事種別や受注形態を理解せずに「地元に向けた提案営業力の強化」等を提案しても全く響かないケースがある。工事種別ごとに利益率は異なり、元請・下請の受注割合や官公庁・民間の受注比率を把握することが不可欠。
+</div>
+
+<h3 class="subsection-title">3. キーマンの把握</h3>
+
+<table>
+<thead><tr><th>確認項目</th><th>確認すべき内容</th><th>リスクシグナル</th></tr></thead>
+<tbody>
+<tr><td><strong>現場代理人・技術者</strong></td><td>建設業の種類ごとの施工管理技士、設計士等の人数</td><td><span class="badge badge-warn">技士の数に限り → 指名発注が来にくくなる</span></td></tr>
+<tr><td><strong>積算担当者</strong></td><td>経歴（積算は受注と予算の要）</td><td><span class="badge badge-danger">定年前で後任なし → 積算精度は経験値に比例</span></td></tr>
+<tr><td><strong>営業担当者</strong></td><td>経歴（営業は特に民間工事・下請工事確保の要）</td><td><span class="badge badge-warn">豊富な工事経験がない → 機動的受注困難</span></td></tr>
+<tr><td><strong>作業員名簿</strong></td><td>年齢・保有資格・勤続年数 → 施工能力の確認</td><td><span class="badge badge-danger">高齢化・流動化 → 施工能力・モチベーション低下</span></td></tr>
+</tbody>
+</table>
+
+<div class="note-box">
+  <strong>積算担当者のチェックは特に重要:</strong> 中小建設業では現場業務を精通したベテランが従事していることが多い。積算担当者が定年間近なのに後任がいないケースでは、明確な役割分担がなかったり、「延々と積算に従事しているか」の経緯を含めた確認が事業性を把握するうえで重要。
+</div>
+
+<h3 class="subsection-title">4. 静観察</h3>
+
+<div class="check-grid">
+  <div class="check-card">
+    <div class="ck-num">CHECK 1</div>
+    <div class="ck-title">資材置き場の整備状況</div>
+    <div class="ck-body">資材が管理整備されているかで、企業の風土や現時点における土台の高低等を推測できる。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">CHECK 2</div>
+    <div class="ck-title">工事車両の駐車状況・清掃状況</div>
+    <div class="ck-body">車両の管理状態は企業全体の管理水準を反映する。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">CHECK 3</div>
+    <div class="ck-title">社内の表彰状・感謝状</div>
+    <div class="ck-body">取引先との関係性、会社の強み、受賞時期から年代感も読み取れる。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">TECHNIQUE</div>
+    <div class="ck-title">静態観察</div>
+    <div class="ck-body"><strong>早朝・休日等に会社の外から観察</strong>する手法。日中の事務所訪問では本業活動を見られない。運営の実態を側面から推し量るのに効果的。</div>
+  </div>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: WHOLESALE -->
+<!-- ============================================================ -->
+<section id="wholesale">
+<h2 class="section-title">中小卸売業の目利き <span class="badge badge-a">訪問時編</span></h2>
+
+<p>卸売業は、その規模感や都市部・地方等の立地、属する業界によって事業性が大きく異なる。ここでは、一般的な中小規模の卸売業全般の事業性や定性的な目利きのポイントをまとめる。</p>
+
+<h3 class="subsection-title">中小卸売業に求められる「3つの機能」</h3>
+
+<div class="func-grid">
+  <div class="func-card">
+    <div class="fc-icon">1</div>
+    <div class="fc-title">待てる機能</div>
+    <div class="fc-body">
+      <strong>「支払い」を待てる</strong> = 金融機能。十分な経営資源がない中小事業者への融通<br><br>
+      <strong>「発注」を待てる</strong> = 受注機能。大手のEOS締切と違い、FAX・電話・メール等で柔軟に対応
+    </div>
+  </div>
+  <div class="func-card">
+    <div class="fc-icon">2</div>
+    <div class="fc-title">分ける機能</div>
+    <div class="fc-body">
+      流通の寡占化で「最低発注ロット」がバラ→ケース→大サイズ化が進む中、<strong>バラ単位での納品</strong>を継続してくれる存在。地元小規模業者からの「選ばれる」事業者。
+    </div>
+  </div>
+  <div class="func-card">
+    <div class="fc-icon">3</div>
+    <div class="fc-title">運べる機能</div>
+    <div class="fc-body">
+      地方の配送困難・建設業の高齢化で、<strong>地域の隅々まで配送</strong>し、現場での積み下ろし（ユニック車等）まで対応できる能力。
+    </div>
+  </div>
+</div>
+
+<h3 class="subsection-title">事業性の見極め公式</h3>
+
+<div class="flow">
+  <div class="flow-step active">待てる機能</div>
+  <span class="flow-arrow">+</span>
+  <div class="flow-step active">分ける機能</div>
+  <span class="flow-arrow">+</span>
+  <div class="flow-step active">運べる機能</div>
+  <span class="flow-arrow">+</span>
+  <div class="flow-step">後継者候補</div>
+  <span class="flow-arrow">=</span>
+  <div class="flow-step active">生存者利益確保</div>
+</div>
+
+<p>流通の寡占化が進む業界特性の中で、<strong>3つの機能を維持し、後継者を絡めた長期的事業継続力</strong>で商圏内の生存者利益を得られるかが事業性を計る大きなカギ。</p>
+
+<h3 class="subsection-title">チェックリスト</h3>
+
+<table>
+<thead><tr><th>機能</th><th>確認項目</th></tr></thead>
+<tbody>
+<tr><td rowspan="2"><strong>待てる</strong></td><td>小規模な取引先への金融機能のような役割を果たしているか？</td></tr>
+<tr><td>取引先からの発注受付の方法の確認（どのような方法か？大手と比べて融通は利くか？）</td></tr>
+<tr><td rowspan="2"><strong>分ける</strong></td><td>バラ納品や単品納品にどの程度対応しているか？</td></tr>
+<tr><td>バラ納品や単品納品に希少性はあるか？</td></tr>
+<tr><td rowspan="3"><strong>運べる</strong></td><td>配送・配達はどのようにしているか？（自社便・運送会社への外注・郵送等）</td></tr>
+<tr><td>現場の配送・配達等において差別化できる機能を持っているか？（ユニック車等）</td></tr>
+<tr><td>自社便による配送機能の継続性はあるか？（運転手の高齢化、車両の老朽化等）</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">支援時の留意点</h3>
+
+<div class="note-box">
+  <strong>在庫削減の安易な適用は危険:</strong>
+  <ul>
+    <li>「不良在庫」「在庫削減」にすぐ目が向きがちだが、<strong>「仕入はケース単位、販売はバラ単位」が当たり前</strong>の業界。業界特性を精緻に分析せず業界平均と比較して不良在庫を割り出すのは危険</li>
+    <li>大手のサービスや品揃えの効率化をそのまま中小に適用すると、<strong>地元取引先から求められる現実的な機能（待てる・分ける・運べる）を低減</strong>させてしまう</li>
+    <li>自社物件の活用方法や借物件の地代家賃負担を十分に勘案し、<strong>少しでも収支や財務負担（借換等の提案による返済負担低減を含む）の改善</strong>を試みる捉え方がポイント</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: MANUFACTURING -->
+<!-- ============================================================ -->
+<section id="manufacturing">
+<h2 class="section-title">中小製造業の目利き <span class="badge badge-a">工場見学編</span></h2>
+
+<p>工場見学は、案内されるまま工場内を見て回る中で、矢継ぎ早に色々な機械の説明を受け、聞きなれない言葉や機械音に圧倒されてしまい、結局何も目利きに繋がらなかったというケースも多い。ここでは、<strong>専門知識が少ない金融機関職員が見学の際に目利きを行う初歩的なポイント</strong>を紹介する。</p>
+
+<h3 class="subsection-title">1. 在庫の確認</h3>
+
+<div class="info-box">
+  <strong>大原則:</strong>
+  <ul>
+    <li>在庫の多寡を<strong>財務諸表だけで判断しない</strong>（在庫はビジネスモデルで決まることもある）</li>
+    <li>在庫の多寡を<strong>金額だけで判断しない</strong>（数量が減っていても材料単価が高騰している場合もある）</li>
+  </ul>
+</div>
+
+<h4>生産形態と在庫の関係</h4>
+
+<div class="matrix-wrap">
+<table class="matrix">
+<thead>
+<tr><th rowspan="2">生産形態</th><th colspan="2">生産方式</th><th rowspan="2">定点発注</th></tr>
+<tr><th>連続生産形態</th><th>個別生産形態</th></tr>
+</thead>
+<tbody>
+<tr>
+  <td class="label-cell">見込生産</td>
+  <td>業種例: 製造小売<br><span class="badge badge-warn">在庫注視: 主力商品の原材料の消費期限</span></td>
+  <td>業種例: 伝統工芸品<br><span class="badge badge-warn">在庫注視: 高価な原材料、大量の製品在庫</span></td>
+  <td class="cell-high">あり</td>
+</tr>
+<tr>
+  <td class="label-cell">受注生産</td>
+  <td>業種例: 部品・食品製造<br><span class="badge badge-warn">在庫注視: 主要原材料在庫・過剰在庫、消費期限</span></td>
+  <td>業種例: 試作・高級品製造<br><span class="badge badge-warn">在庫注視: 高価な原材料、不良材在庫</span></td>
+  <td class="cell-low">なし</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<p style="font-size:0.82rem;color:#555">※定点発注: 在庫が一定まで減少したら定期的に発注する方式。包材・薬品・油脂等は定点発注ありの場合、一次改善が可能な場合もある。</p>
+
+<h3 class="subsection-title">2. 生産形態の確認（4つの視点）</h3>
+
+<div class="check-grid">
+  <div class="check-card">
+    <div class="ck-num">VIEW 1</div>
+    <div class="ck-title">生産現場の視察</div>
+    <div class="ck-body">ポイントを押さえて行う。漫然と見学するだけでは何も理解できない。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">VIEW 2</div>
+    <div class="ck-title">組織図の確認</div>
+    <div class="ck-body">組織図があれば確認する。生産現場の俯瞰的な理解が進み、生産工程視察のロードマップにもなる。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">VIEW 3</div>
+    <div class="ck-title">生産工程の視察</div>
+    <div class="ck-body">単に工場と設備の説明を受けるのではなく、<strong>生産工程の説明</strong>を受け可能な限りの理解を深める。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">VIEW 4</div>
+    <div class="ck-title">整理整頓の確認</div>
+    <div class="ck-body">工場視察時に随所の整理整頓状況を確認する。<strong>生産効率と直結する</strong>ことが多い。</div>
+  </div>
+</div>
+
+<h3 class="subsection-title">3. 5秒 &times; 10回診断</h3>
+
+<div class="highlight-box">
+  <strong>工場の生産改善提案のための現場観察手法:</strong>
+  <ol>
+    <li>1人の工員の作業に注目する</li>
+    <li>注目した工員の作業を<strong>5秒ごとに見る</strong>、を<strong>10回</strong>繰り返す</li>
+    <li><strong>「直接作業」を行っている回数</strong>を数える</li>
+    <li>おおむね10回中<strong>6〜7回以上</strong>「直接作業」に従事していれば、初見としては「良い」とする</li>
+  </ol>
+</div>
+
+<div class="kpi-strip" style="grid-template-columns:repeat(3,1fr)">
+  <div class="kpi-card">
+    <div class="kpi-label">観察時間</div>
+    <div class="kpi-value">5秒</div>
+    <div class="kpi-sub">1回あたりの観察時間</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">繰り返し回数</div>
+    <div class="kpi-value">10回</div>
+    <div class="kpi-sub">同一工員を10回観察</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">合格ライン</div>
+    <div class="kpi-value">6-7回</div>
+    <div class="kpi-sub">直接作業に従事していれば「良い」</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>「直接作業」とは:</strong> その工員の本来業務。例えば洋服の縫製工であればミシンで縫製をしていることが「直接作業」。移動、待機、探し物、段取り替え等は「間接作業」。中小企業では6〜7回直接作業に従事しているのは結構な水準。大手企業の高度な生産管理とは別の文脈で見る。
+</div>
+
+<h3 class="subsection-title">4. 日付と修正に注目する</h3>
+
+<table>
+<thead><tr><th>確認対象</th><th>着眼ポイント</th><th>読み取れること</th></tr></thead>
+<tbody>
+<tr>
+  <td><strong>日付</strong></td>
+  <td>作業指示書・伝票・伝言メモ・品質管理報告・機械点検表等の日付を確認。過去・未来にどのくらいバラツキがあるか</td>
+  <td><span class="badge badge-warn">見学日が5/15なのに伝票の納期が4月 → 生産の遅れが生じている可能性</span></td>
+</tr>
+<tr>
+  <td><strong>手書き修正</strong></td>
+  <td>作業指示書や伝票等の印刷物が手書きで修正されている度合いを見る</td>
+  <td><span class="badge badge-warn">修正が多い → 生産予定や生産計画が頻繁に変更されている。社内の情報伝達に問題がないか</span></td>
+</tr>
+<tr>
+  <td><strong>貼り紙・伝言メモ</strong></td>
+  <td>材料・製品に添付された紙、ホワイトボードに貼られた紙やメモ</td>
+  <td><span class="badge badge-info">放置されたメモ → 情報共有の仕組みや管理の成熟度を示す</span></td>
+</tr>
+</tbody>
+</table>
+
+<h4>決算書と工場のバランス</h4>
+
+<div class="check-grid">
+  <div class="check-card">
+    <div class="ck-num"><span class="badge badge-ok">決算が良い</span></div>
+    <div class="ck-title">注意すべき工場の見え方</div>
+    <div class="ck-body">整然としていない状態を「活気がある」と捉えるな。口が規格外品の多さや「忙しさ」を見せる場合は要注意。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num"><span class="badge badge-danger">決算が悪い</span></div>
+    <div class="ck-title">注意すべき工場の見え方</div>
+    <div class="ck-body">整然としていても「受注不足」と安易に捉えるな。「忙しさ」の裏が非効率な生産現場に見えるケースもある。</div>
+  </div>
+</div>
+
+<div class="note-box">
+  <strong>事前の決算分析は大切だが:</strong> 財務分析で先入観を持ちすぎると、現場で得られる情報さえ見逃すことがある。定量面と定性面の目利きのバランスに注意して下さい。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: COREWO APPLICATION -->
+<!-- ============================================================ -->
+<section id="corewo">
+<h2 class="section-title">COREWO業務への活用ポイント</h2>
+
+<div class="check-grid">
+  <div class="check-card">
+    <div class="ck-num">USE CASE 1</div>
+    <div class="ck-title">顧客訪問前の予習</div>
+    <div class="ck-body">業種に応じたチェックリストとして活用。訪問時に<strong>何を見て何を聞くべきか</strong>が明確になる。建設業なら施工体制の型、卸売業なら3機能の充足度、製造業なら在庫と生産形態を事前に整理。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">USE CASE 2</div>
+    <div class="ck-title">補助金申請支援</div>
+    <div class="ck-body">事業計画策定の際に、金融機関の視点を踏まえた計画書が書ける。<strong>金融機関が納得する粒度</strong>で事業性を説明することで、認定支援機関としての確認書発行もスムーズに。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">USE CASE 3</div>
+    <div class="ck-title">決算前MTG</div>
+    <div class="ck-body">顧客の業種に応じた着眼点を踏まえて分析すれば、<strong>より本質的な議論</strong>ができる。数字だけでなく、業種特有の構造的課題を理解した上での提案が可能に。</div>
+  </div>
+  <div class="check-card">
+    <div class="ck-num">USE CASE 4</div>
+    <div class="ck-title">地銀向け提案</div>
+    <div class="ck-body">金融機関職員が日常的に使うべきフレームワークとして、<strong>ダッシュボード等の提案資料に組み込める</strong>可能性。補助金採択分析と組み合わせた業種×支援の提案に発展。</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <strong>補助金採択ダッシュボードとの接続:</strong> 本資料の業種別チェックポイントは、補助金の事業計画書における「事業の現状分析」「課題の特定」パートと直結する。例えば製造業の「5秒&times;10回診断」で課題を特定し、その改善のための設備投資を補助金で賄う――という流れは、補助金申請の王道パターン。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- FOOTER -->
+<!-- ============================================================ -->
+<div class="report-footer">
+  <p><strong>出典:</strong> 金融庁委託 / 日本生産性本部作成「業種別支援の着眼点」（建設業 訪問時編 p.21-22、卸売業 訪問時編 p.49-50、製造業 工場見学編 p.8-9）</p>
+  <p>本レポートはCOREWO社内利用のための要約版です。原典の全文はデスクトップ > 財務コンサルタント > ① に格納。</p>
+  <p style="margin-top:8px">Generated by Claude Code | 2026-04-20</p>
+</div>
+
+</div>
+
+<script>
+const pills=document.querySelectorAll('.pill');
+const sections=document.querySelectorAll('section[id]');
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      pills.forEach(p=>p.classList.remove('active'));
+      const id=e.target.getAttribute('id');
+      const active=document.querySelector(`.pill[href="#${id}"]`);
+      if(active)active.classList.add('active');
+    }
+  });
+},{rootMargin:'-20% 0px -70% 0px'});
+sections.forEach(s=>obs.observe(s));
+</script>
+</body>
+</html>
