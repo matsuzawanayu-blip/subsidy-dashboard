@@ -10,17 +10,29 @@ html{font-size:15px}
 #sticky-nav{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-bottom:1px solid #ccc;padding:12px 20px;display:flex;align-items:center;gap:8px;flex-wrap:wrap;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
 #sticky-nav .nav-label{font-size:0.72rem;font-weight:700;color:#777;letter-spacing:0.05em;margin-right:4px;white-space:nowrap}
 .pill{display:inline-block;padding:5px 16px;font-size:0.78rem;font-weight:600;color:#555;text-decoration:none;border:1px solid #ccc;border-radius:999px;transition:all 0.2s ease;white-space:nowrap}
-.pill:hover,.pill.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.pill:hover,.pill.active{background:#2563eb;color:#fff;border-color:#2563eb}
+.pill[href="#construction"]:hover,.pill[href="#construction"].active{background:#d97706;border-color:#d97706}
+.pill[href="#wholesale"]:hover,.pill[href="#wholesale"].active{background:#059669;border-color:#059669}
+.pill[href="#manufacturing"]:hover,.pill[href="#manufacturing"].active{background:#7c3aed;border-color:#7c3aed}
+.pill[href="#corewo"]:hover,.pill[href="#corewo"].active{background:#dc2626;border-color:#dc2626}
 #main{max-width:960px;margin:0 auto;padding:40px 48px 80px}
-.report-header{border-bottom:2px solid #1a1a1a;padding-bottom:20px;margin-bottom:32px}
+.report-header{border-bottom:3px solid #2563eb;padding-bottom:20px;margin-bottom:32px}
 .report-header h1{font-size:1.6rem;font-weight:700;line-height:1.3;margin:0 0 4px}
 .report-header .subtitle{font-size:0.9rem;color:#555;margin-bottom:16px}
 .report-header .summary-box{background:#f7f7f7;border:1px solid #ddd;padding:16px 20px;margin-top:16px}
 .report-header .summary-box h3{font-size:0.85rem;font-weight:700;margin:0 0 10px}
 .report-header .summary-box ul{padding-left:20px;font-size:0.82rem;margin:0}
 .report-header .summary-box li{margin-bottom:4px}
-h2.section-title{font-size:1.2rem;font-weight:700;border-bottom:1px solid #999;padding-bottom:6px;margin-top:48px;margin-bottom:20px}
-h3.subsection-title{font-size:1.0rem;font-weight:700;margin-top:32px;margin-bottom:12px;padding-left:10px;border-left:3px solid #555}
+h2.section-title{font-size:1.2rem;font-weight:700;border-bottom:2px solid #2563eb;padding-bottom:6px;margin-top:48px;margin-bottom:20px}
+h3.subsection-title{font-size:1.0rem;font-weight:700;margin-top:32px;margin-bottom:12px;padding-left:10px;border-left:4px solid #2563eb}
+#construction h2.section-title{border-bottom-color:#d97706}
+#construction h3.subsection-title{border-left-color:#d97706}
+#wholesale h2.section-title{border-bottom-color:#059669}
+#wholesale h3.subsection-title{border-left-color:#059669}
+#manufacturing h2.section-title{border-bottom-color:#7c3aed}
+#manufacturing h3.subsection-title{border-left-color:#7c3aed}
+#corewo h2.section-title{border-bottom-color:#dc2626}
+#corewo h3.subsection-title{border-left-color:#dc2626}
 h4{font-size:0.9rem;font-weight:700;margin-top:20px;margin-bottom:8px}
 p{margin-bottom:10px;font-size:0.88rem}
 ul,ol{margin-bottom:10px;padding-left:22px;font-size:0.88rem}
@@ -31,21 +43,24 @@ table th{background:#f0f0f0;font-weight:700;white-space:nowrap}
 table td{background:#fff}
 table tr:nth-child(even) td{background:#fafafa}
 .badge{display:inline-block;padding:2px 10px;font-size:0.72rem;font-weight:700;border-radius:999px;letter-spacing:0.03em}
-.badge-a{background:#1a1a1a;color:#fff}
+.badge-a{background:#2563eb;color:#fff}
+.badge-construction{background:#d97706;color:#fff}
+.badge-wholesale{background:#059669;color:#fff}
+.badge-manufacturing{background:#7c3aed;color:#fff}
 .badge-b{background:#555;color:#fff}
 .badge-c{background:#ccc;color:#333}
 .badge-ok{background:#d4edda;color:#155724}
 .badge-warn{background:#fff3cd;color:#856404}
 .badge-info{background:#d1ecf1;color:#0c5460}
 .badge-danger{background:#f8d7da;color:#721c24}
-.highlight-box{background:#f7f7f7;border:1px solid #ddd;padding:14px 18px;margin:12px 0 20px;font-size:0.85rem}
+.highlight-box{background:#f7f7f7;border:1px solid #ddd;border-left:4px solid #6366f1;padding:14px 18px;margin:12px 0 20px;font-size:0.85rem}
 .note-box{background:#fffbeb;border-left:4px solid #f59e0b;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#78350f}
 .info-box{background:#eff6ff;border-left:4px solid #3b82f6;padding:10px 16px;margin:12px 0 20px;font-size:0.82rem;color:#1e3a5f}
 .report-footer{border-top:1px solid #999;margin-top:48px;padding-top:16px;font-size:0.78rem;color:#777}
 .kpi-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#ddd;border:1px solid #ddd;margin:20px 0 32px}
 .kpi-card{background:#fff;padding:20px 16px;text-align:center}
 .kpi-card .kpi-label{font-size:0.72rem;color:#777;letter-spacing:0.05em;margin-bottom:4px}
-.kpi-card .kpi-value{font-size:1.8rem;font-weight:700;line-height:1}
+.kpi-card .kpi-value{font-size:1.8rem;font-weight:700;line-height:1;color:#7c3aed}
 .kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:4px}
 .trend-row{display:flex;align-items:center;gap:12px;margin:8px 0}
 .trend-bar-wrap{flex:1;height:20px;background:#e8e8e8;position:relative}
@@ -53,27 +68,31 @@ table tr:nth-child(even) td{background:#fafafa}
 .trend-label{font-size:0.78rem;min-width:160px;text-align:right}
 .trend-value{font-size:0.78rem;font-weight:700;min-width:50px}
 .check-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:16px 0}
-.check-card{border:1px solid #ddd;padding:14px 16px}
+.check-card{border:1px solid #ddd;padding:14px 16px;border-top:3px solid #2563eb}
+#construction .check-card{border-top-color:#d97706}
+#wholesale .check-card{border-top-color:#059669}
+#manufacturing .check-card{border-top-color:#7c3aed}
+#corewo .check-card{border-top-color:#dc2626}
 .check-card .ck-num{font-size:0.72rem;color:#999;font-weight:700;margin-bottom:4px}
 .check-card .ck-title{font-size:0.92rem;font-weight:700;margin-bottom:8px}
 .check-card .ck-body{font-size:0.8rem;color:#555;line-height:1.6}
 .func-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
-.func-card{border:1px solid #ddd;padding:16px 18px;text-align:center}
-.func-card .fc-icon{font-size:2rem;margin-bottom:8px}
-.func-card .fc-title{font-size:1.0rem;font-weight:700;margin-bottom:8px}
+.func-card{border:1px solid #ddd;padding:16px 18px;text-align:center;border-top:3px solid #059669}
+.func-card .fc-icon{font-size:2rem;margin-bottom:8px;color:#059669}
+.func-card .fc-title{font-size:1.0rem;font-weight:700;margin-bottom:8px;color:#059669}
 .func-card .fc-body{font-size:0.78rem;color:#555;line-height:1.6;text-align:left}
 .flow{display:flex;align-items:center;gap:0;margin:20px 0;flex-wrap:wrap;justify-content:center}
 .flow-step{background:#f0f0f0;border:1px solid #ccc;padding:10px 18px;font-size:0.82rem;font-weight:600;text-align:center;min-width:100px}
-.flow-step.active{background:#1a1a1a;color:#fff;border-color:#1a1a1a}
+.flow-step.active{background:#059669;color:#fff;border-color:#059669}
 .flow-arrow{font-size:1.2rem;color:#999;padding:0 4px}
 .matrix-wrap{overflow-x:auto;margin:16px 0 24px}
 .matrix{border-collapse:collapse;font-size:0.78rem;width:100%;min-width:600px}
 .matrix th,.matrix td{border:1px solid #ccc;padding:6px 8px;text-align:center;vertical-align:middle}
 .matrix th{background:#f0f0f0;font-weight:700;font-size:0.72rem}
 .matrix td.label-cell{text-align:left;font-weight:600;white-space:nowrap;background:#fff}
-.matrix .cell-high{background:#1a1a1a;color:#fff;font-weight:700}
-.matrix .cell-mid{background:#999;color:#fff}
-.matrix .cell-low{background:#e8e8e8;color:#555}
+.matrix .cell-high{background:#7c3aed;color:#fff;font-weight:700}
+.matrix .cell-mid{background:#a78bfa;color:#fff}
+.matrix .cell-low{background:#ede9fe;color:#6d28d9}
 @media(max-width:640px){
   #main{padding:24px 20px 60px}
   .report-header h1{font-size:1.3rem}
@@ -132,28 +151,6 @@ table tr:nth-child(even) td{background:#fafafa}
   </div>
 </div>
 
-<div class="kpi-strip">
-  <div class="kpi-card">
-    <div class="kpi-label">対象業種数</div>
-    <div class="kpi-value">3</div>
-    <div class="kpi-sub">建設・卸売・製造</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">チェック項目数</div>
-    <div class="kpi-value">40+</div>
-    <div class="kpi-sub">訪問時・工場見学時の着眼点</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">出典</div>
-    <div class="kpi-value">金融庁</div>
-    <div class="kpi-sub">日本生産性本部 委託作成</div>
-  </div>
-  <div class="kpi-card">
-    <div class="kpi-label">対象読者</div>
-    <div class="kpi-value">営業担当</div>
-    <div class="kpi-sub">金融機関の法人担当者向け</div>
-  </div>
-</div>
 
 <div class="note-box">
   <strong>なぜこの資料が重要か:</strong> 公的機関が出している網羅的・実践的な資料。中小企業経営者は資金調達コンサルや「あなたのCFO」系サービスに頼る前に、金融機関がどういう目線で見ているかをこの資料で把握すべき。金融機関の営業担当にとっても、支店の先輩・上司の口伝より網羅性がある教科書。<strong>商社志望者は日本貿易会へ、お金借りたい人は金融庁へ。</strong>
@@ -164,7 +161,7 @@ table tr:nth-child(even) td{background:#fafafa}
 <!-- SECTION 1: CONSTRUCTION -->
 <!-- ============================================================ -->
 <section id="construction">
-<h2 class="section-title">中小建設業の目利き <span class="badge badge-a">訪問時編</span></h2>
+<h2 class="section-title">中小建設業の目利き <span class="badge badge-construction">訪問時編</span></h2>
 
 <p>会社を訪問する際に、どのようなことに目を凝らし、何を聞けばよいか分からないという質問が多い。企業の事業性や経営改善の可能性を判断するのに必要な、基本的なポイントをまとめる。</p>
 
@@ -260,7 +257,7 @@ table tr:nth-child(even) td{background:#fafafa}
 <!-- SECTION 2: WHOLESALE -->
 <!-- ============================================================ -->
 <section id="wholesale">
-<h2 class="section-title">中小卸売業の目利き <span class="badge badge-a">訪問時編</span></h2>
+<h2 class="section-title">中小卸売業の目利き <span class="badge badge-wholesale">訪問時編</span></h2>
 
 <p>卸売業は、その規模感や都市部・地方等の立地、属する業界によって事業性が大きく異なる。ここでは、一般的な中小規模の卸売業全般の事業性や定性的な目利きのポイントをまとめる。</p>
 
@@ -338,7 +335,7 @@ table tr:nth-child(even) td{background:#fafafa}
 <!-- SECTION 3: MANUFACTURING -->
 <!-- ============================================================ -->
 <section id="manufacturing">
-<h2 class="section-title">中小製造業の目利き <span class="badge badge-a">工場見学編</span></h2>
+<h2 class="section-title">中小製造業の目利き <span class="badge badge-manufacturing">工場見学編</span></h2>
 
 <p>工場見学は、案内されるまま工場内を見て回る中で、矢継ぎ早に色々な機械の説明を受け、聞きなれない言葉や機械音に圧倒されてしまい、結局何も目利きに繋がらなかったというケースも多い。ここでは、<strong>専門知識が少ない金融機関職員が見学の際に目利きを行う初歩的なポイント</strong>を紹介する。</p>
 
