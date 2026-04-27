@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>琉球銀行×補助金支援 市場分析レポート</title>
+<title>琉球銀行 補助金支援 事業戦略レポート</title>
 <style>
 body{font-family:"Noto Sans JP","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:#1a1a1a;background:#fff;line-height:1.7;margin:0}
 html{font-size:15px}
@@ -46,10 +46,6 @@ table tr:nth-child(even) td{background:#fafafa}
 .kpi-card .kpi-label{font-size:0.72rem;color:#777;letter-spacing:0.05em;margin-bottom:4px}
 .kpi-card .kpi-value{font-size:2rem;font-weight:700;line-height:1}
 .kpi-card .kpi-sub{font-size:0.78rem;color:#555;margin-top:4px}
-.score-bar{display:inline-flex;align-items:center;gap:6px}
-.score-fill{height:10px;background:#1a1a1a;display:inline-block}
-.score-empty{height:10px;background:#e8e8e8;display:inline-block}
-.score-num{font-size:0.78rem;font-weight:700;min-width:22px;text-align:right}
 .trend-row{display:flex;align-items:center;gap:12px;margin:8px 0}
 .trend-bar-wrap{flex:1;height:20px;background:#e8e8e8;position:relative}
 .trend-bar-fill{height:100%;background:#1a1a1a;position:absolute;left:0;top:0}
@@ -66,10 +62,12 @@ table tr:nth-child(even) td{background:#fafafa}
 .flow-arrow{font-size:1.2rem;color:#999;padding:0 4px}
 .gap-chart{margin:16px 0}
 .gap-row{display:flex;align-items:center;margin:6px 0;font-size:0.82rem}
-.gap-label{min-width:140px;font-weight:600}
+.gap-label{min-width:160px;font-weight:600}
 .gap-bar{height:22px;display:flex;align-items:center;border-radius:2px}
-.gap-bar-hk{background:#dc2626;opacity:0.8}
-.gap-bar-avg{background:#1a1a1a;opacity:0.6}
+.gap-bar-ryukyu{background:#dc2626;opacity:0.85}
+.gap-bar-bank{background:#1a1a1a}
+.gap-bar-consul{background:#777}
+.gap-bar-public{background:#bbb}
 .gap-bar-top{background:#1a1a1a}
 .gap-legend{display:flex;gap:20px;margin:10px 0;font-size:0.75rem;color:#555}
 .gap-legend span{display:flex;align-items:center;gap:4px}
@@ -112,14 +110,14 @@ table tr:nth-child(even) td{background:#fafafa}
 <div id="sticky-nav">
   <span class="nav-label">SECTIONS</span>
   <a href="#overview" class="pill active">概況</a>
-  <a href="#ranking" class="pill">地銀ランキング</a>
-  <a href="#group-ranking" class="pill">グループ込み</a>
-  <a href="#revenue" class="pill">売上推定</a>
-  <a href="#ryukyu-gap" class="pill">琉球銀行Gap</a>
-  <a href="#okinawa-region" class="pill">沖縄県競合</a>
-  <a href="#okinawa-industry" class="pill">沖縄の機会</a>
+  <a href="#agenda" class="pill">ご提案ポイント</a>
+  <a href="#okinawa-market" class="pill">沖縄県の市場</a>
+  <a href="#ryukyu-position" class="pill">琉球銀行の現在地</a>
+  <a href="#whitespace" class="pill">空白地帯</a>
+  <a href="#large-subsidy" class="pill">大型補助金</a>
   <a href="#sevenrich" class="pill">SEVENRICH実績</a>
   <a href="#proposal" class="pill">協業のご提案</a>
+  <a href="#national-context" class="pill">全国比較</a>
   <a href="#appendix" class="pill">付録</a>
 </div>
 
@@ -130,297 +128,304 @@ table tr:nth-child(even) td{background:#fafafa}
 <!-- ============================================================ -->
 <section id="overview">
 <div class="report-header">
-  <h1>琉球銀行×補助金支援 市場分析レポート</h1>
-  <p class="subtitle">公示採択事例データベース 4制度・27,162件の全数分析 | 2026-04-22</p>
+  <h1>琉球銀行 補助金支援 事業戦略レポート</h1>
+  <p class="subtitle">公示採択事例データベース 4制度・全数分析 | 2026-04-22</p>
   <div class="summary-box">
     <h3>エグゼクティブサマリー</h3>
     <ul>
-      <li>補助金採択事例4制度（ものづくり/大規模成長投資/成長加速化/新事業進出）の公示データから、支援金融機関を全数抽出・ランキング化</li>
-      <li>��銀146行が計3,805件の採択を支援。上位行は静岡銀行229件（1位）、名古屋銀行207件（2位）</li>
-      <li>沖縄県は製造業比率4.7%（全国最低）だが、<strong>観光・IT・建設・食品加工の補助金活用ニーズは高い</strong>。ものづくり補助金に限らず、新事業進出補助金・省力化補助金との親和性が大きい</li>
-      <li>琉球銀行は県内メインバンクシェア約4割。<strong>沖縄県内の補助金支援は公的機関・商工会主導であり、銀行が本格参入すれば市場リーダーになれるポジション</strong></li>
-      <li>SEVENRICH Accountingは45件申請・26件採択（<strong>採択率57.8%</strong>）。<strong>5制度中4制度で市場平均を大幅に上回る採択率</strong></li>
+      <li>沖縄県の4制度採択は<strong>全210件</strong>。全国的には小さい市場だが、裏を返すと<strong>1つの金融機関が面で取り切れる規模</strong>でもある</li>
+      <li>この210件のうち<strong>銀行が関与しているのは23件（11%）</strong>に留まり、<strong>残り89%が非銀行領域</strong>として空いている</li>
+      <li>琉球銀行は<strong>20件で県内2位・銀行では1位</strong>。沖縄銀行は3件のみで、<strong>銀行セグメントでは既に主導権を握っている</strong></li>
+      <li><strong>大規模成長投資補助金は0件、成長加速化は1件</strong>。件数競争ではなく、<strong>大型補助金をどう立ち上げるか</strong>が次の論点</li>
+      <li>支援機関上位に個人名が並ぶことは、<strong>沖縄県内に組織的な申請支援プレイヤーが不在</strong>であることを示している</li>
     </ul>
-    <p style="font-size:0.76rem;color:#555;margin:10px 0 0">※ 市場分析は公示採択事例<strong>4制度</strong>が対象。SEVENRICH実績は5制度横断。琉球銀行の個別件数は公示データが限定的なため、推定値を含む。</p>
+    <p style="font-size:0.76rem;color:#555;margin:10px 0 0">※ 公示採択事例4制度（ものづくり／大規模成長投資／成長加速化／新事業進出）が対象。</p>
   </div>
 </div>
 
 <div class="kpi-strip">
   <div class="kpi-card">
-    <div class="kpi-label">4制度 全採択件数</div>
-    <div class="kpi-value">46,529</div>
-    <div class="kpi-sub">うち金融機関記載あり 27,162件</div>
+    <div class="kpi-label">沖縄県 全採択件数</div>
+    <div class="kpi-value">210</div>
+    <div class="kpi-sub">北陸3県(1,074件)の約1/5</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-label">地銀の関与率</div>
-    <div class="kpi-value">8.2%</div>
-    <div class="kpi-sub">3,805件 / 46,529件（146行）</div>
+    <div class="kpi-label">琉球銀行の支援件数</div>
+    <div class="kpi-value">20</div>
+    <div class="kpi-sub">県内2位（銀行では1位）</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-label">沖縄県 メインバンクシェア</div>
-    <div class="kpi-value">約40%</div>
-    <div class="kpi-sub">琉球銀行（帝国DB調査）</div>
+    <div class="kpi-label">銀行の県内シェア</div>
+    <div class="kpi-value">11%</div>
+    <div class="kpi-sub">23件 / 210件（残り89%が非銀行）</div>
   </div>
   <div class="kpi-card">
-    <div class="kpi-label">沖縄県 製造業比率</div>
-    <div class="kpi-value">4.7%</div>
-    <div class="kpi-sub">全国最低（全国平均15.7%）</div>
+    <div class="kpi-label">大型補助金</div>
+    <div class="kpi-value">ほぼゼロ</div>
+    <div class="kpi-sub">大規模成長0件 / 成長加速化1件</div>
   </div>
 </div>
-
-<div class="note-box">
-  <strong>沖縄県の特殊性:</strong> 製造業比率は全国最低だが、観光（県GDPの約15%）・IT/情報通信（100社超・雇用2万人超）・建設（GDP比9.0%、全国8位）が主力。ものづくり補助金だけでなく、<strong>新事業進出補助金・省力化補助金・成長加速化補助金がより大きな機会</strong>となりうる。
-</div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 1: RANKING -->
+<!-- SECTION 0.5: AGENDA -->
 <!-- ============================================================ -->
-<section id="ranking">
-<h2 class="section-title">地銀 補助金支援ランキング TOP20</h2>
-
-<p>全国146地銀のうち、採択支援件数上位20行。<strong>製造業集積地の地銀が上位を占める</strong>傾向が明確。</p>
-
-<table>
-<thead>
-<tr><th>順位</th><th>銀行名</th><th>合計</th><th>ものづくり</th><th>大規模成長</th><th>成長加速化</th><th>新事業進出</th></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td><strong>静岡銀行</strong></td><td><strong>229</strong></td><td>211</td><td>10</td><td>7</td><td>1</td></tr>
-<tr><td>2</td><td><strong>名古屋銀行</strong></td><td><strong>207</strong></td><td>205</td><td>2</td><td>0</td><td>0</td></tr>
-<tr><td>3</td><td>八十二銀行</td><td>144</td><td>133</td><td>8</td><td>3</td><td>0</td></tr>
-<tr><td>4</td><td>常陽銀行</td><td>120</td><td>114</td><td>5</td><td>1</td><td>0</td></tr>
-<tr><td>5</td><td>京都銀行</td><td>119</td><td>109</td><td>4</td><td>6</td><td>0</td></tr>
-<tr><td>6</td><td>大分銀行</td><td>100</td><td>96</td><td>3</td><td>1</td><td>0</td></tr>
-<tr><td>7</td><td>中国銀行</td><td>97</td><td>86</td><td>6</td><td>5</td><td>0</td></tr>
-<tr><td>8</td><td>山形銀行</td><td>94</td><td>91</td><td>1</td><td>2</td><td>0</td></tr>
-<tr><td>9</td><td>伊予銀行</td><td>88</td><td>83</td><td>3</td><td>2</td><td>0</td></tr>
-<tr><td>10</td><td>北陸銀行</td><td>86</td><td>77</td><td>6</td><td>3</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>11</td><td>清水銀行</td><td>79</td><td>77</td><td>1</td><td>1</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>12</td><td>北海道銀行</td><td>78</td><td>75</td><td>1</td><td>2</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>13</td><td>百十四銀行</td><td>78</td><td>77</td><td>0</td><td>1</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>14</td><td>十六銀行</td><td>78</td><td>73</td><td>3</td><td>2</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>15</td><td>群馬銀行</td><td>72</td><td>58</td><td>8</td><td>4</td><td>2</td></tr>
-<tr style="background:#f0f0f0"><td>16</td><td>足利銀行</td><td>68</td><td>61</td><td>4</td><td>3</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>17</td><td>愛知銀行</td><td>62</td><td>62</td><td>0</td><td>0</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>18</td><td>紀陽銀行</td><td>62</td><td>57</td><td>2</td><td>3</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>19</td><td>福井銀行</td><td>61</td><td>57</td><td>1</td><td>3</td><td>0</td></tr>
-<tr style="background:#f0f0f0"><td>20</td><td>東和銀行</td><td>59</td><td>58</td><td>0</td><td>1</td><td>0</td></tr>
-</tbody>
-</table>
-
-<div class="info-box">
-  <strong>注目ポイント:</strong> 上位行はすべて<strong>製造業が盛んな県の地銀</strong>。沖縄県のように製造業比率が低い地域の地銀は、このランキングでは構造的に不利。ただし、<strong>新事業進出補助金や省力化補助金など非製造業向け制度の拡充で状況は変わりつつある。</strong>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 1.5: GROUP RANKING -->
-<!-- ============================================================ -->
-<section id="group-ranking">
-<h2 class="section-title">銀行グループ・関連組織の活用事例</h2>
-
-<p>上位地銀の中には、グループ会社にコンサル機能を集約し、補助金支援を推進している事例がある。<strong>琉球銀行グループにはりゅうぎん総合研究所</strong>がシンクタンク機能を担っている。</p>
-
-<h3 class="subsection-title">成功事例：グループ会社による補助金支援</h3>
-
-<table>
-<thead><tr><th>銀行名</th><th>グループ会社</th><th>G社件数</th><th>効果</th></tr></thead>
-<tbody>
-<tr style="background:#f0fdf4"><td><strong>北洋銀行</strong></td><td>北海道共創パートナーズ（100%子会社）</td><td><strong>113件</strong></td><td>単体22位→G込3位に急浮上</td></tr>
-<tr style="background:#f0fdf4"><td><strong>横浜銀行</strong></td><td>浜銀総合研究所（FG傘下）</td><td><strong>33件</strong></td><td>単体54位→G込27位</td></tr>
-<tr style="background:#f0fdf4"><td><strong>群馬銀行</strong></td><td>ぐんぎんコンサルティング（100%子会社）</td><td><strong>9件</strong></td><td>単体15位→G込12位</td></tr>
-</tbody>
-</table>
-
-<h3 class="subsection-title">琉球銀行グループのコンサル・研究機能</h3>
-
-<table>
-<thead><tr><th>組織名</th><th>関係区分</th><th>設立</th><th>主な機能</th><th>補助金支援</th></tr></thead>
-<tbody>
-<tr style="background:#fef2f2"><td><strong>りゅうぎん総合研究所</strong></td><td>連結子会社（100%推定）</td><td>2006年</td><td>産業・経済調査、投資事業組合</td><td>現時点で補助金支援の公開実績なし</td></tr>
-</tbody>
-</table>
-
-<div class="highlight-box">
-  <strong>示唆:</strong>
-  <ul>
-    <li><strong>北洋銀行モデル</strong>が最も参考になる。製造業比率が高くない北海道でも、100%子会社「北海道共創パートナーズ」が<strong>113件の採択支援を実現</strong>。人口構成や産業構造が全国平均と異なる地域でも、<strong>専門チーム体制を構築すれば成果は出せる。</strong></li>
-    <li><strong>りゅうぎん総合研究所</strong>はシンクタンク機能が主であり、補助金申請支援は現在行っていない。同研究所のコンサル機能を強化するか、新たに補助金支援の専門チームを設置することが選択肢。</li>
-    <li>2025年4月から開始した<strong>DX診断サービス</strong>は、補助金申請の前段階にあたる「企業課題の見える化」ツール。<strong>DX診断→補助金マッチング→申請支援</strong>の一気通貫フローが構築可能。</li>
-  </ul>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 1.6: REVENUE ESTIMATION -->
-<!-- ============================================================ -->
-<section id="revenue">
-<h2 class="section-title">補助金事業 推定売上（フェルミ推定）</h2>
-
-<h3 class="subsection-title">推定ロジック</h3>
-<div class="highlight-box">
-  <strong>前提条件:</strong>
-  <ul>
-    <li><strong>ものづくり補助金:</strong> 平均補助金額 約1,000万円 × コンサルフィー率10% = <strong>100万円/件</strong></li>
-    <li><strong>新事業進出補助金:</strong> 平均補助金額 約2,500万円 × コンサルフィー率10% = <strong>250万円/件</strong></li>
-    <li><strong>成長加速化補助金:</strong> 1件あたり約<strong>3,000万円</strong></li>
-    <li><strong>大規模成長投資補助金:</strong> 1件あたり約<strong>4,500万円</strong></li>
-  </ul>
-</div>
-
-<h3 class="subsection-title">地銀TOP10 推定売上ランキング</h3>
-
-<table>
-<thead><tr><th>順位</th><th>銀行名</th><th>もの補助<br>@100万</th><th>成長加速化<br>@3,000万</th><th>大規模成長<br>@4,500万</th><th>推定売上<br>合計</th></tr></thead>
-<tbody>
-<tr><td>1</td><td><strong>広島銀行</strong></td><td>36件 / 0.36億</td><td>6件 / 1.80億</td><td><strong>18件 / 8.10億</strong></td><td><strong>10.26億</strong></td></tr>
-<tr><td>2</td><td><strong>静岡銀行</strong></td><td>213件 / 2.13億</td><td>7件 / 2.10億</td><td>10件 / 4.50億</td><td><strong>8.78億</strong></td></tr>
-<tr><td>3</td><td>群馬銀行</td><td>62件 / 0.62億</td><td>3件 / 0.90億</td><td><strong>12件 / 5.40億</strong></td><td><strong>7.02億</strong></td></tr>
-<tr><td>4</td><td>八十二銀行</td><td>133件 / 1.33億</td><td>3件 / 0.90億</td><td>8件 / 3.60億</td><td><strong>5.83億</strong></td></tr>
-<tr><td>5</td><td>中国銀行</td><td>86件 / 0.86億</td><td>5件 / 1.50億</td><td>6件 / 2.70億</td><td><strong>5.06億</strong></td></tr>
-<tr><td>6</td><td>福岡銀行</td><td>8件 / 0.08億</td><td>3件 / 0.90億</td><td><strong>9件 / 4.05億</strong></td><td><strong>5.03億</strong></td></tr>
-<tr><td>7</td><td>京都銀行</td><td>109件 / 1.09億</td><td>6件 / 1.80億</td><td>4件 / 1.80億</td><td><strong>4.69億</strong></td></tr>
-<tr><td>8</td><td>北陸銀行</td><td>77件 / 0.77億</td><td>3件 / 0.90億</td><td>6件 / 2.70億</td><td><strong>4.37億</strong></td></tr>
-<tr><td>9</td><td>滋賀銀行</td><td>42件 / 0.42億</td><td>3件 / 0.90億</td><td>6件 / 2.70億</td><td><strong>4.02億</strong></td></tr>
-<tr><td>10</td><td>常陽銀行</td><td>114件 / 1.14億</td><td>1件 / 0.30億</td><td>5件 / 2.25億</td><td><strong>3.69億</strong></td></tr>
-</tbody>
-</table>
-
-<div class="highlight-box">
-  <strong>大型補助金のインパクト:</strong>
-  <ul>
-    <li><strong>広島銀行</strong>は件数では20位台だが、大規模成長投資18件（推定8.1億）で売上1位。<strong>大型案件1件のフィーがものづくり45件分に相当。</strong></li>
-    <li><strong>福岡銀行</strong>もものづくりは8件のみだが大規模成長投資9件で5.03億。<strong>製造業が少ない地域でも大型案件に注力すれば売上は上がる。</strong></li>
-    <li>沖縄県でも大規模な観光施設投資や食品加工施設の案件があれば、<strong>大型補助金の獲得は十分に可能</strong>。</li>
-  </ul>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 2: RYUKYU GAP -->
-<!-- ============================================================ -->
-<section id="ryukyu-gap">
-<h2 class="section-title">琉球銀行の現状分析</h2>
-
-<h3 class="subsection-title">件数ベース：全国上位地銀との比較</h3>
-
-<div class="gap-chart">
-  <div class="gap-legend">
-    <span><span class="dot" style="background:#dc2626"></span> 琉球銀行（推定）</span>
-    <span><span class="dot" style="background:#1a1a1a"></span> 全国上位</span>
-  </div>
-  <div class="gap-row"><span class="gap-label">静岡銀行</span><div class="gap-bar gap-bar-top" style="width:100%;max-width:450px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">229件</span></div></div>
-  <div class="gap-row"><span class="gap-label">名古屋銀行</span><div class="gap-bar gap-bar-top" style="width:90.4%;max-width:407px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">207件</span></div></div>
-  <div class="gap-row"><span class="gap-label">常陽銀行</span><div class="gap-bar gap-bar-top" style="width:52.4%;max-width:236px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">120件</span></div></div>
-  <div class="gap-row"><span class="gap-label">大分銀行</span><div class="gap-bar gap-bar-top" style="width:43.7%;max-width:197px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">100件</span></div></div>
-  <div class="gap-row"><span class="gap-label">福岡銀行</span><div class="gap-bar gap-bar-avg" style="width:8.7%;max-width:39px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">20件</span></div></div>
-  <div class="gap-row"><span class="gap-label"><strong>琉球銀行 &#9733;</strong></span><div class="gap-bar gap-bar-hk" style="width:6.6%;max-width:30px"><span style="color:#fff;padding:0 4px;font-size:0.72rem;font-weight:700">推定15件</span></div></div>
-</div>
-
-<div class="note-box">
-  <strong>件数の読み方:</strong> 琉球銀行の件数が少ないのは、沖縄県の<strong>製造業比率4.7%（全国最低）</strong>に起因する構造的要因が大きい。上位行はすべて製造業集積地の地銀。福岡銀行も本体のものづくり補助金は8件と少ないが、<strong>大型案件9件で売上5億円台を実現</strong>している。<strong>件数より「大型案件の獲得力」が重要。</strong>
-</div>
-
-<h3 class="subsection-title">琉球銀行のポテンシャル：沖縄の強みを活かす</h3>
-
-<table>
-<thead><tr><th>観点</th><th>現状</th><th>ポテンシャル</th></tr></thead>
-<tbody>
-<tr><td>メインバンクシェア</td><td><strong>約40%</strong>（県内最大）</td><td>県内企業約15,000社の最大顧客基盤。他県と異なりシェアが分散しにくい</td></tr>
-<tr><td>中計「Empower 2025」</td><td>法人コンサル強化を明記</td><td>DX診断サービス（2025年4月〜）が補助金の入口になる</td></tr>
-<tr><td>観光産業</td><td>県GDP約15%</td><td>インバウンド回復→大規模設備投資→大型補助金の対象に</td></tr>
-<tr><td>IT・情報通信</td><td>100社超・2万人超</td><td>新事業進出補助金との高い親和性。DX型案件</td></tr>
-<tr><td>建設業</td><td>GDP比9.0%（全国8位）</td><td>省力化・自動化投資でものづくり補助金が適合</td></tr>
-<tr><td>食品加工（泡盛等）</td><td>地場産業</td><td>HACCP対応・輸出対応・6次産業化で補助金活用余地大</td></tr>
-</tbody>
-</table>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 3: OKINAWA REGION -->
-<!-- ============================================================ -->
-<section id="okinawa-region">
-<h2 class="section-title">沖縄県 補助金支援の競合環境</h2>
-
-<p>沖縄県の補助金支援は<strong>公的機関・商工会が中心</strong>で、民間金融機関の参入余地が大きい。</p>
-
-<h3 class="subsection-title">沖縄県の主要な補助金支援プレイヤー</h3>
-
-<table>
-<thead><tr><th>支援機関</th><th>タイプ</th><th>特徴</th></tr></thead>
-<tbody>
-<tr style="background:#fef2f2;font-weight:700"><td>琉球銀行 &#9733;</td><td><span class="badge badge-a">銀行</span></td><td>県内メインバンクシェア約40%。認定支援機関。DX診断サービス開始</td></tr>
-<tr><td>沖縄銀行</td><td><span class="badge badge-a">銀行</span></td><td>おきなわFG傘下。県内シェア2位。認定支援機関</td></tr>
-<tr><td>沖縄海邦銀行</td><td><span class="badge badge-a">銀行</span></td><td>県内シェア3位。Webで補助金情報を明示的に案内</td></tr>
-<tr><td>沖縄県産業振興公社</td><td><span class="badge badge-c">公的機関</span></td><td>県が設立した公益財団法人。よろず支援拠点を運営。ハンズオン支援</td></tr>
-<tr><td>那覇商工会議所</td><td><span class="badge badge-c">商工会</span></td><td>持続化補助金が主戦場。小規模事業者向け</td></tr>
-<tr><td>沖縄県よろず支援拠点</td><td><span class="badge badge-c">公的機関</span></td><td>無料経営相談。補助金申請のアドバイスも実施</td></tr>
-<tr><td>民間コンサル・税理士法人</td><td><span class="badge badge-b">コンサル</span></td><td>中小企業診断士・税理士による個別支援</td></tr>
-</tbody>
-</table>
-
-<div class="highlight-box">
-  <strong>構造的な特徴:</strong>
-  <ul>
-    <li>沖縄県は<strong>地銀3行でメインバンクシェア9割超</strong>。補助金支援において銀行が本格的に取り組めば、県内の大部分の企業にリーチ可能。</li>
-    <li>現状の補助金支援は<strong>公的機関（産業振興公社・よろず支援拠点）と商工会が主導</strong>。銀行は確認書発行に留まるケースが多いと推定。</li>
-    <li><strong>琉球銀行がメインバンクシェア4割を活かして補助金支援に本格参入すれば、県内金融機関として唯一の差別化ポジション</strong>を確立できる。</li>
-  </ul>
-</div>
-</section>
-
-<!-- ============================================================ -->
-<!-- SECTION 4: OKINAWA OPPORTUNITY -->
-<!-- ============================================================ -->
-<section id="okinawa-industry">
-<h2 class="section-title">沖縄県の補助金活用機会</h2>
-
-<h3 class="subsection-title">沖縄県の産業構造</h3>
-
-<table>
-<thead><tr><th>産業セクター</th><th>GDP/雇用シェア</th><th>全国比較</th><th>主な補助金テーマ</th></tr></thead>
-<tbody>
-<tr><td><strong>観光・宿泊・飲食</strong></td><td>GDP約15%</td><td>全国平均の約2倍</td><td>設備DX化・省力化・インバウンド対応（省力化・大規模成長）</td></tr>
-<tr><td><strong>建設業</strong></td><td>GDP 9.0%</td><td>全国8位</td><td>ICT施工・省力化・新工法導入（ものづくり・省力化）</td></tr>
-<tr><td><strong>IT・情報通信</strong></td><td>100社超・2万人超</td><td>コールセンター集積地</td><td>新事業開発・AI/DX（新事業進出・ものづくり）</td></tr>
-<tr><td><strong>食品加工（泡盛等）</strong></td><td>製造業内で最大</td><td>—</td><td>HACCP対応・輸出・6次産業化（ものづくり・新事業進出）</td></tr>
-<tr><td>製造業全体</td><td>GDP 4.7%</td><td>全国最低</td><td>—</td></tr>
-</tbody>
-</table>
-
-<h3 class="subsection-title">沖縄ならではの補助金活用シナリオ</h3>
+<section id="agenda">
+<h2 class="section-title">ご提案ポイント</h2>
 
 <div class="strat-grid">
 <div class="strat-card">
-  <div class="strat-num">SCENARIO 01</div>
-  <div class="strat-title">観光施設のDX・省力化投資</div>
-  <div class="strat-body">ホテル・リゾートのセルフチェックイン、AI料金最適化、清掃ロボット等。省力化投資補助金・ものづくり補助金のデジタル枠が適合。1施設あたり<strong>1,000〜3,000万円規模</strong>の案件が多数見込める。</div>
+  <div class="strat-num">POINT 01</div>
+  <div class="strat-title">沖縄は「小さい市場」ではなく「取り組み余地の大きい市場」</div>
+  <div class="strat-body">4制度の採択件数は210件と小さいが、その分だけ市場支配の難易度も低い。<strong>県内シェア30%でも63件</strong>であり、全国上位行のように100〜200件を争う構造ではない。</div>
 </div>
 <div class="strat-card">
-  <div class="strat-num">SCENARIO 02</div>
-  <div class="strat-title">泡盛・食品の海外展開</div>
-  <div class="strat-body">泡盛の海外輸出、沖縄食材のブランド化。ものづくり補助金グローバル枠、新事業進出補助金が適合。<strong>SEVENRICHの「三輪素麺×北米展開」採択事例</strong>と同じ型で攻められる。</div>
+  <div class="strat-num">POINT 02</div>
+  <div class="strat-title">今後の伸びしろは、非銀行領域に大きく残っている</div>
+  <div class="strat-body">銀行関与は23件に留まり、琉球銀行20件・沖縄銀行3件という状況である。今後さらに存在感を高めるうえでは、<strong>非銀行が担っている187件の領域に、銀行としてどう関与を広げるか</strong>が重要になる。</div>
 </div>
 <div class="strat-card">
-  <div class="strat-num">SCENARIO 03</div>
-  <div class="strat-title">IT企業の新事業進出</div>
-  <div class="strat-body">コールセンターからAI/SaaS事業への転換。新事業進出補助金が最適。<strong>沖縄のIT集積（100社超）は、まだ補助金活用が進んでいないブルーオーシャン。</strong></div>
+  <div class="strat-num">POINT 03</div>
+  <div class="strat-title">大型補助金は、今後の収益構造を変えうる領域である</div>
+  <div class="strat-body">現在の推定売上0.49億のうち、成長加速化1件が0.30億を占める。<strong>大型案件1〜2件で事業の見え方が変わる</strong>ため、観光投資や食品投資を補助金案件に転換する余地が大きい。</div>
 </div>
 <div class="strat-card">
-  <div class="strat-num">SCENARIO 04</div>
-  <div class="strat-title">建設業の生産性向上</div>
-  <div class="strat-body">ICT施工・ドローン測量・3Dモデリング等の導入。ものづくり補助金の設備投資枠。沖縄県の建設業はGDP比9.0%と全国8位の高さで、<strong>案件の母数が大きい。</strong></div>
+  <div class="strat-num">POINT 04</div>
+  <div class="strat-title">既存施策を、より強い案件創出導線へつなげられる</div>
+  <div class="strat-body">DX診断サービス、法人顧客基盤、りゅうぎん総合研究所という既存資産はある。必要なのは新規事業ではなく、<strong>それらを補助金支援の導線として接続する運営設計</strong>である。</div>
 </div>
 </div>
 
-<div class="info-box">
-  <strong>福岡銀行の先行事例:</strong> 同じ九州エリアの福岡銀行はものづくり補助金8件だが大規模成長投資9件で推定売上5.03億。<strong>製造業が少なくても大型案件に注力すれば売上は上がる</strong>ことを証明している。沖縄県でも大規模な観光施設投資や食品加工施設の案件があれば同様の成果が期待できる。
+<div class="note-box">
+  <strong>今回のご提案の軸:</strong> 補助金支援を単発の申請支援ではなく、<strong>県内企業の投資相談に伴走するための機能</strong>として位置づけ、制度選定から申請支援までを無理なく運営できる体制づくりを目指す。
 </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 6: SEVENRICH -->
+<!-- SECTION 1: OKINAWA MARKET -->
+<!-- ============================================================ -->
+<section id="okinawa-market">
+<h2 class="section-title">沖縄県の補助金市場：「小さいが独占可能」な市場</h2>
+
+<h3 class="subsection-title">県別の採択件数比較</h3>
+
+<div class="gap-chart">
+  <div class="gap-legend">
+    <span><span class="dot" style="background:#1a1a1a"></span> 他県</span>
+    <span><span class="dot" style="background:#dc2626"></span> 沖縄県</span>
+  </div>
+  <div class="gap-row"><span class="gap-label">北陸3県（石川/富山/福井）</span><div class="gap-bar gap-bar-top" style="width:100%;max-width:450px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">1,074件</span></div></div>
+  <div class="gap-row"><span class="gap-label">静岡県（参考）</span><div class="gap-bar gap-bar-top" style="width:65%;max-width:293px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">約700件</span></div></div>
+  <div class="gap-row"><span class="gap-label">長野県（参考）</span><div class="gap-bar gap-bar-top" style="width:42%;max-width:189px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">約450件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><strong>沖縄県 &#9733;</strong></span><div class="gap-bar gap-bar-ryukyu" style="width:19.6%;max-width:88px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">210件</span></div></div>
+</div>
+
+<p>沖縄県の採択件数210件は全国でも少ない部類に入る。これは製造業比率4.7%（全国最低）に起因する構造的要因。しかし<strong>市場が小さいことは、逆に「1つの組織で押さえきれる」ことを意味する。</strong></p>
+
+<h3 class="subsection-title">沖縄県 支援機関の構造</h3>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">銀行が取っている件数</div>
+    <div class="kpi-value">23件</div>
+    <div class="kpi-sub">うち琉球銀行20件・沖縄銀行3件</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">非銀行が取っている件数</div>
+    <div class="kpi-value">187件</div>
+    <div class="kpi-sub">商工会・個人コンサル・士業など</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">銀行のシェア</div>
+    <div class="kpi-value">11%</div>
+    <div class="kpi-sub">残り89%が取りこぼし</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">個人名の支援機関</div>
+    <div class="kpi-value">多数</div>
+    <div class="kpi-sub">組織的支援体制が不在</div>
+  </div>
+</div>
+
+<div class="highlight-box">
+  <strong>重要な発見:</strong>
+  <ul>
+    <li>沖縄県の支援機関ランキング上位に<strong>個人名（士業・個人コンサルタント）が多数</strong>並ぶ。法人として組織的な支援体制を持つプレイヤーが県内にほぼ存在しない。</li>
+    <li>全国的には船井総研・F&Mなどの大手コンサルが地銀と連携しているが、<strong>沖縄県にはそのような大手の存在感がない。</strong></li>
+    <li>これは裏を返せば、<strong>組織的な支援体制を持つ銀行＋専門パートナーの組み合わせで、市場の大部分を獲得できる可能性</strong>を意味する。</li>
+  </ul>
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2: RYUKYU POSITION -->
+<!-- ============================================================ -->
+<section id="ryukyu-position">
+<h2 class="section-title">琉球銀行の現在地：銀行としては既に「県内独占」</h2>
+
+<h3 class="subsection-title">沖縄県内 支援機関ランキング</h3>
+
+<table>
+<thead><tr><th>順位</th><th>支援機関名</th><th>件数</th><th>シェア</th><th>タイプ</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>商工会連合会</strong></td><td>34</td><td>16.2%</td><td><span class="badge badge-c">商工会</span></td></tr>
+<tr style="background:#fef2f2;font-weight:700"><td>2</td><td>琉球銀行 &#9733;</td><td>20</td><td>9.5%</td><td><span class="badge badge-a">銀行</span></td></tr>
+<tr><td>3〜</td><td><em>個人名（士業・コンサル）が複数</em></td><td>各数件</td><td>—</td><td><span class="badge badge-b">個人</span></td></tr>
+<tr><td>—</td><td>沖縄銀行</td><td>3</td><td>1.4%</td><td><span class="badge badge-a">銀行</span></td></tr>
+</tbody>
+</table>
+
+<div class="gap-chart">
+  <div class="gap-legend">
+    <span><span class="dot" style="background:#dc2626"></span> 琉球銀行</span>
+    <span><span class="dot" style="background:#bbb"></span> 商工会</span>
+    <span><span class="dot" style="background:#777"></span> 個人コンサル・士業</span>
+    <span><span class="dot" style="background:#1a1a1a"></span> 沖縄銀行</span>
+  </div>
+  <div class="gap-row"><span class="gap-label">商工会連合会</span><div class="gap-bar gap-bar-public" style="width:100%;max-width:340px"><span style="padding:0 8px;font-size:0.78rem;font-weight:700">34件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><strong>琉球銀行 &#9733;</strong></span><div class="gap-bar gap-bar-ryukyu" style="width:58.8%;max-width:200px"><span style="color:#fff;padding:0 8px;font-size:0.78rem;font-weight:700">20件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><em>個人A（士業）</em></span><div class="gap-bar gap-bar-consul" style="width:20%;max-width:68px"><span style="color:#fff;padding:0 4px;font-size:0.72rem">数件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><em>個人B（コンサル）</em></span><div class="gap-bar gap-bar-consul" style="width:18%;max-width:61px"><span style="color:#fff;padding:0 4px;font-size:0.72rem">数件</span></div></div>
+  <div class="gap-row"><span class="gap-label"><em>個人C</em></span><div class="gap-bar gap-bar-consul" style="width:15%;max-width:51px"><span style="color:#fff;padding:0 4px;font-size:0.72rem">数件</span></div></div>
+  <div class="gap-row"><span class="gap-label">沖縄銀行</span><div class="gap-bar gap-bar-bank" style="width:8.8%;max-width:30px"><span style="color:#fff;padding:0 4px;font-size:0.72rem">3件</span></div></div>
+</div>
+
+<h3 class="subsection-title">琉球銀行の制度別内訳</h3>
+
+<table>
+<thead><tr><th>制度</th><th>件数</th><th>推定売上</th><th>備考</th></tr></thead>
+<tbody>
+<tr><td>ものづくり補助金</td><td>19件</td><td>0.19億（@100万）</td><td>県内の製造業事業者1,048社が母数</td></tr>
+<tr><td>成長加速化補助金</td><td>1件</td><td>0.30億（@3,000万）</td><td>県内ではごく僅かな大型案件</td></tr>
+<tr><td>大規模成長投資補助金</td><td><strong>0件</strong></td><td>—</td><td><span class="badge badge-warn">完全に手つかず</span></td></tr>
+<tr><td>新事業進出補助金</td><td>0件</td><td>—</td><td>IT企業のピボット案件に親和性が高い制度</td></tr>
+<tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>20件</td><td>0.49億</td><td>—</td></tr>
+</tbody>
+</table>
+
+<div class="note-box">
+  <strong>現状の読み方:</strong> 琉球銀行は沖縄県内の銀行として補助金支援の実質的なリーダーである（沖縄銀行3件との差は圧倒的）。問題は件数ではなく、<strong>「取りこぼしている89%」と「手つかずの大型補助金」</strong>にある。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3: WHITESPACE -->
+<!-- ============================================================ -->
+<section id="whitespace">
+<h2 class="section-title">空白地帯：回収可能な「残り89%」</h2>
+
+<p>沖縄県210件のうち、銀行以外が支援している187件。この多くは<strong>個人士業や小規模コンサルが場当たり的に対応しているケース</strong>と推定される。組織的な支援体制があれば吸収できる案件が含まれている。</p>
+
+<h3 class="subsection-title">なぜ89%が銀行以外に流れているのか</h3>
+
+<div class="strat-grid">
+<div class="strat-card">
+  <div class="strat-num">要因 01</div>
+  <div class="strat-title">銀行は「確認書発行」に留まっている</div>
+  <div class="strat-body">多くのケースで、銀行は認定支援機関として確認書にハンコを押すだけ。申請書の作成支援は行っていない。<strong>企業側は「銀行に補助金の相談ができる」と認識していない</strong>可能性が高い。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">要因 02</div>
+  <div class="strat-title">専門人材がいない</div>
+  <div class="strat-body">補助金申請には制度知識＋計画書作成スキルが必要。銀行内にこの専門人材がいないため、<strong>案件があっても士業や個人コンサルに紹介して終わり</strong>になっている。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">要因 03</div>
+  <div class="strat-title">県内に組織的プレイヤーがいない</div>
+  <div class="strat-body">全国では船井総研・F&Mが地銀と組んでいるが、沖縄にはその種のプレイヤーが参入していない。<strong>支援機関の顔ぶれが個人名だらけという事実が、市場の未成熟さを示している。</strong></div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">要因 04</div>
+  <div class="strat-title">制度マッチングが不十分</div>
+  <div class="strat-body">沖縄の産業（観光・IT・建設）に適合する制度は、ものづくり補助金だけではない。<strong>新事業進出補助金や省力化補助金の存在が、企業に十分に認知されていない。</strong></div>
+</div>
+</div>
+
+<h3 class="subsection-title">回収可能な件数の試算</h3>
+
+<div class="highlight-box">
+  <strong>シナリオ:</strong> 現在の銀行シェア11%（23件/210件）を<strong>30%に引き上げた場合</strong>:
+  <ul>
+    <li>210件 × 30% = <strong>63件</strong>（現在の約3倍）</li>
+    <li>うち琉球銀行が60件を取る想定（沖縄銀行3件を現状維持とすると）</li>
+    <li>これは全国地銀ランキングで<strong>TOP20圏内に相当</strong>（20位・東和銀行59件を上回る）</li>
+  </ul>
+  市場全体が小さい（210件）ため、<strong>あと40件を追加で獲得するだけで県内シェア30%に到達</strong>する。全国の上位行が100〜200件を争うのとは次元が違い、<strong>手が届く目標</strong>である。
+</div>
+
+<h3 class="subsection-title">沖縄で特に有望な非製造業テーマ</h3>
+
+<table>
+<thead><tr><th>テーマ</th><th>産業基盤</th><th>適合制度</th><th>1件あたり規模</th></tr></thead>
+<tbody>
+<tr><td><strong>観光施設のDX・省力化</strong></td><td>県GDP約15%</td><td>省力化補助金・ものづくり</td><td>1,000〜3,000万円</td></tr>
+<tr><td><strong>IT企業の新事業転換</strong></td><td>100社超・2万人超</td><td>新事業進出補助金</td><td>2,000〜2,500万円</td></tr>
+<tr><td><strong>建設業の生産性向上</strong></td><td>GDP比9.0%（全国8位）</td><td>ものづくり補助金</td><td>1,000万円</td></tr>
+<tr><td><strong>泡盛・食品の海外展開</strong></td><td>地場産業</td><td>ものづくりグローバル枠</td><td>1,000〜3,000万円</td></tr>
+<tr><td><strong>大規模観光投資</strong></td><td>リゾート開発</td><td>大規模成長投資補助金</td><td><strong>4,500万円</strong></td></tr>
+</tbody>
+</table>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4: LARGE SUBSIDY -->
+<!-- ============================================================ -->
+<section id="large-subsidy">
+<h2 class="section-title">大型補助金：手つかずの成長加速化・大規模成長投資</h2>
+
+<p>琉球銀行の推定売上は0.49億円。その内訳は<strong>ものづくり19件（0.19億）＋成長加速化1件（0.30億）</strong>。成長加速化のたった1件が売上の61%を占めている。<strong>大型案件の破壊力は証明済み。</strong></p>
+
+<h3 class="subsection-title">大型補助金1件のインパクト</h3>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">現在の推定売上</div>
+    <div class="kpi-value">0.49億</div>
+    <div class="kpi-sub">もの19件+加速1件</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">大規模成長投資 1件追加時</div>
+    <div class="kpi-value">0.94億</div>
+    <div class="kpi-sub">+0.45億（1件で売上ほぼ倍増）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">大型 計3件追加時</div>
+    <div class="kpi-value">1.84億</div>
+    <div class="kpi-sub">+1.35億（大規模2件+加速1件）</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">福岡銀行の実績</div>
+    <div class="kpi-value">5.03億</div>
+    <div class="kpi-sub">もの補8件+大規模9件</div>
+  </div>
+</div>
+
+<div class="info-box">
+  <strong>福岡銀行モデル:</strong> 同じ九州エリアの福岡銀行は、ものづくり補助金はわずか8件。しかし大規模成長投資9件（推定4.05億）で<strong>推定売上5.03億</strong>を実現。<strong>製造業に依存しなくても、大型案件に集中すれば売上は上がる。</strong>
+</div>
+
+<h3 class="subsection-title">沖縄県で大型補助金が狙える案件像</h3>
+
+<div class="strat-grid">
+<div class="strat-card">
+  <div class="strat-num">案件像 01</div>
+  <div class="strat-title">大規模リゾート施設のDX投資</div>
+  <div class="strat-body">ホテル・リゾートの大規模設備投資（AI予約管理・エネルギー管理・自動化設備）。投資額5〜50億円規模で<strong>大規模成長投資補助金</strong>が適合。沖縄のリゾート開発は国際競争力強化の文脈で採択されやすい。</div>
+</div>
+<div class="strat-card">
+  <div class="strat-num">案件像 02</div>
+  <div class="strat-title">食品加工施設の大規模近代化</div>
+  <div class="strat-body">泡盛・食品メーカーのHACCP対応・自動化ライン導入。投資額3〜10億円規模で<strong>成長加速化補助金</strong>が適合。6次産業化・輸出対応は政策的にも加点されやすいテーマ。</div>
+</div>
+</div>
+
+<div class="note-box">
+  <strong>ポイント:</strong> 大規模成長投資補助金は1件あたり推定フィー4,500万円。<strong>沖縄県の大型案件を1件獲得するだけで、ものづくり補助金45件分の売上に匹敵する。</strong>琉球銀行の法人顧客の中に、まだ補助金活用を検討していない大口投資案件が眠っている可能性は高い。
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 5: SEVENRICH -->
 <!-- ============================================================ -->
 <section id="sevenrich">
 <h2 class="section-title">SEVENRICH Accounting 実績</h2>
@@ -463,110 +468,166 @@ table tr:nth-child(even) td{background:#fafafa}
 </table>
 
 <div class="note-box">
-  <strong>沖縄の法人顧客に適用した場合:</strong> SEVENRICHの顧客層はシード期スタートアップが中心だが、琉球銀行の法人顧客は<strong>事業実績のある観光・建設・食品企業</strong>。財務基盤が確立された企業に同じノウハウを適用すれば、<strong>特に省力化補助金（83.3%）・持続化補助金（85.7%）で高い採択率が期待できる。</strong>
+  <strong>沖縄の法人顧客に適用した場合:</strong> SEVENRICHの顧客はシード期スタートアップ中心で、事業基盤が成熟企業より弱い。琉球銀行の法人顧客（事業実績のある観光・建設・食品企業）に同じノウハウを適用すれば、<strong>より高い採択率が期待できる。</strong>
 </div>
 
-<h3 class="subsection-title">SEVENRICHが確立した「4つの採択ドライバー」</h3>
-
-<div class="strat-grid">
-<div class="strat-card">
-  <div class="strat-num">DRIVER 01</div>
-  <div class="strat-title">計画書の精度と投資妥当性</div>
-  <div class="strat-body">先端技術（AI・DX・IoT）の活用が審査上の加点に直結。投資回収期間3-5年以内、金融機関等の妥当性確認（確認書等）を必須化。</div>
-</div>
-<div class="strat-card">
-  <div class="strat-num">DRIVER 02</div>
-  <div class="strat-title">事業実施・モニタリング体制</div>
-  <div class="strat-body">財務基盤・労務環境・モニタリング体制の3点。ローカルベンチマーク点数、法令対応した賃金台帳、認定支援機関確認書が鍵。</div>
-</div>
-<div class="strat-card">
-  <div class="strat-num">DRIVER 03</div>
-  <div class="strat-title">制度と事業の構造的整合</div>
-  <div class="strat-body">制度趣旨と事業計画の合致性。もの補は「革新的開発」、省力化は「AI・機械化」、新事業進出は「既存強み×新領域」。制度ごとの"型"に合わせる力。</div>
-</div>
-<div class="strat-card">
-  <div class="strat-num">DRIVER 04</div>
-  <div class="strat-title">加点の戦略的取得</div>
-  <div class="strat-body">加点0個 vs 4個で採択率は約2倍差。経営革新計画の承認・パートナーシップ構築宣言・DX認定・BCP策定等を事前に取得する戦略設計。</div>
-</div>
-</div>
-
-<h3 class="subsection-title">沖縄に適用可能な採択事例</h3>
+<h3 class="subsection-title">沖縄に直接応用できる採択事例</h3>
 
 <div class="case-grid">
 <div class="case-card">
   <div class="cc-head"><span class="cc-title">三輪素麺 北米市場開拓事業</span><span class="badge badge-ok">採択</span></div>
-  <div class="cc-body">伝統食品の海外市場展開。グローバル枠の政策適合性が決め手。<strong>泡盛・沖縄食材の海外展開に直接応用可能</strong>。</div>
+  <div class="cc-body">伝統食品の海外展開。グローバル枠の政策適合性が決め手。<strong>→ 泡盛・沖縄食材の海外展開に直接応用可能。</strong></div>
   <div class="cc-tag"><span class="badge badge-info">ものづくり補助金</span> <span class="badge badge-c">伝統食品×海外展開</span></div>
 </div>
 <div class="case-card">
   <div class="cc-head"><span class="cc-title">産廃業の請求・行政報告DX化</span><span class="badge badge-ok">採択</span></div>
-  <div class="cc-body">業界特化型のバックオフィスDX。<strong>観光業のDX化（予約管理・インバウンド対応）</strong>に同じ型で応用可能。</div>
+  <div class="cc-body">業界特化型バックオフィスDX。<strong>→ 観光業の予約管理・インバウンド対応DXに同じ型で応用可能。</strong></div>
   <div class="cc-tag"><span class="badge badge-info">省力化投資補助金</span> <span class="badge badge-c">業界特化DX</span></div>
 </div>
 <div class="case-card">
   <div class="cc-head"><span class="cc-title">MARKETING AIによる新事業進出</span><span class="badge badge-ok">採択</span></div>
-  <div class="cc-body">既存事業の強みをAI活用に転換。<strong>沖縄ITコールセンター企業のAI/SaaS事業への転換</strong>に直接応用可能。</div>
+  <div class="cc-body">既存事業の強みをAI活用に転換。<strong>→ 沖縄ITコールセンター企業のAI/SaaS転換に直接応用可能。</strong></div>
   <div class="cc-tag"><span class="badge badge-info">新事業進出補助金</span> <span class="badge badge-c">既存事業活用型AI</span></div>
 </div>
+<div class="case-card">
+  <div class="cc-head"><span class="cc-title">水産食品リーディングカンパニーへの挑戦</span><span class="badge badge-ok">採択</span></div>
+  <div class="cc-body">3社コンソーシアム。補助額4.45億。<strong>→ 沖縄の大型観光・食品投資の成長加速化案件に応用可能。</strong></div>
+  <div class="cc-tag"><span class="badge badge-info">成長加速化補助金</span> <span class="badge badge-c">大型案件×100億規模</span></div>
+</div>
+</div>
+
+<h3 class="subsection-title">なぜSEVENRICHが「組織的支援の不在」を埋められるか</h3>
+
+<div class="highlight-box">
+  沖縄県の支援機関に個人名が並ぶ現状は、<strong>「組織的な申請支援体制」が存在しないことの裏返し</strong>。SEVENRICHが提供するのは:
+  <ul>
+    <li><strong>制度横断のマッチング力:</strong> 5制度の「型」を理解し、企業に最適な制度を選定できる</li>
+    <li><strong>計画書の品質管理:</strong> 採択率57.8%を支える標準化されたプロセス（加点戦略・投資妥当性チェック・制度整合性検証）</li>
+    <li><strong>大型案件の経験:</strong> 成長加速化補助金100%採択（市場平均16%）。大規模成長投資への展開力</li>
+  </ul>
+  個人士業では提供できない<strong>「量産可能な仕組み」</strong>を、琉球銀行の顧客基盤に乗せる。
 </div>
 </section>
 
 <!-- ============================================================ -->
-<!-- SECTION 7: PROPOSAL -->
+<!-- SECTION 6: PROPOSAL -->
 <!-- ============================================================ -->
 <section id="proposal">
 <h2 class="section-title">協業のご提案：琉球銀行×SEVENRICH Accounting</h2>
 
-<h3 class="subsection-title">琉球銀行にとっての成長機会</h3>
+<h3 class="subsection-title">メッセージ：「補助金支援」を地域法人戦略の機能にする</h3>
 
 <div class="strat-grid">
 <div class="strat-card">
   <div class="strat-num">FACT 01</div>
-  <div class="strat-title">県内唯一のポジション</div>
-  <div class="strat-body">メインバンクシェア約40%で県内最大。沖縄県の補助金支援は公的機関主導で、<strong>銀行として本格参入すれば他に先んじてリーダーシップを確立できる。</strong>沖縄銀行・海邦銀行もまだ本格参入していない今がチャンス。</div>
+  <div class="strat-title">銀行として既にオーナーである</div>
+  <div class="strat-body">20件で県内銀行1位。沖縄銀行（3件）との差は圧倒的。<strong>問題は他行との競争ではなく、「残り89%の非銀行領域からどう回収するか」。</strong>市場の構造上、この回収は御行にしかできない。</div>
 </div>
 <div class="strat-card">
   <div class="strat-num">FACT 02</div>
-  <div class="strat-title">「Empower 2025」との整合</div>
-  <div class="strat-body">中期経営計画で法人コンサル強化を明記。DX診断サービスは補助金申請の前段階そのもの。<strong>「DX診断→補助金マッチング→申請支援→モニタリング」の一気通貫フローが自然に構築できる。</strong></div>
+  <div class="strat-title">個人士業を組織力で置き換える</div>
+  <div class="strat-body">県内の支援機関は個人名だらけ。組織的な支援体制を持つプレイヤーがいない。<strong>琉球銀行＋SEVENRICHという「銀行の顧客基盤×専門家の申請力」の組み合わせは、個人士業には太刀打ちできない。</strong></div>
 </div>
 <div class="strat-card">
   <div class="strat-num">FACT 03</div>
-  <div class="strat-title">製造業に依存しない戦略</div>
-  <div class="strat-body">福岡銀行モデル（もの補8件でも大型案件で売上5億）が示す通り、<strong>製造業比率が低くても大型案件と非製造業向け制度で十分な成果が出せる。</strong>観光・IT・建設・食品が沖縄の4大テーマ。</div>
+  <div class="strat-title">大型補助金が丸ごと空いている</div>
+  <div class="strat-body">大規模成長投資補助金ゼロ、成長加速化1件。<strong>大型案件1件で推定フィー3,000〜4,500万円。2〜3件獲得すれば売上は現在の3倍以上に。</strong>沖縄のリゾート・食品投資は大型案件の宝庫。</div>
 </div>
 <div class="strat-card">
   <div class="strat-num">FACT 04</div>
-  <div class="strat-title">SEVENRICHのノウハウがフィットする</div>
-  <div class="strat-body">採択率57.8%のノウハウは制度横断型。<strong>省力化補助金（83.3%）は観光DXに、新事業進出（37.5%）はIT企業のピボットに、ものづくりグローバル枠は泡盛の海外展開に</strong>それぞれ適用可能。</div>
+  <div class="strat-title">既存施策を「案件化機能」に変えられる</div>
+  <div class="strat-body">2025年4月に開始したDX診断サービスは、補助金申請の前段階そのもの。<strong>DX診断→課題可視化→制度マッチング→申請支援→採択後モニタリング</strong>まで繋げることで、法人支援を単発施策から継続接点へ変えられる。</div>
 </div>
 </div>
 
-<h3 class="subsection-title">協業スキーム案</h3>
+<h3 class="subsection-title">数値目標</h3>
+
+<div class="kpi-strip">
+  <div class="kpi-card">
+    <div class="kpi-label">現在の件数</div>
+    <div class="kpi-value">20件</div>
+    <div class="kpi-sub">県内シェア9.5%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">3年後目標</div>
+    <div class="kpi-value">60件超</div>
+    <div class="kpi-sub">県内シェア30%</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">現在の推定売上</div>
+    <div class="kpi-value">0.49億</div>
+    <div class="kpi-sub">大型案件ほぼゼロ</div>
+  </div>
+  <div class="kpi-card">
+    <div class="kpi-label">3年後売上目標</div>
+    <div class="kpi-value">2.0億超</div>
+    <div class="kpi-sub">大型3件+もの補40件</div>
+  </div>
+</div>
+
+<h3 class="subsection-title">実行ステップ</h3>
 
 <div class="flow">
-  <div class="flow-step active">STEP 1<br><small>DX診断サービスと<br>補助金の連携設計</small></div>
+  <div class="flow-step active">STEP 1<br><small>DX診断×補助金<br>連携フロー構築</small></div>
   <span class="flow-arrow">&#9654;</span>
-  <div class="flow-step">STEP 2<br><small>法人顧客から<br>候補企業選定</small></div>
+  <div class="flow-step">STEP 2<br><small>法人顧客から<br>パイロット10件</small></div>
   <span class="flow-arrow">&#9654;</span>
   <div class="flow-step">STEP 3<br><small>SEVENRICH<br>申請支援</small></div>
   <span class="flow-arrow">&#9654;</span>
-  <div class="flow-step">STEP 4<br><small>採択・実行<br>モニタリング</small></div>
+  <div class="flow-step">STEP 4<br><small>大型案件<br>1〜2件に着手</small></div>
   <span class="flow-arrow">&#9654;</span>
-  <div class="flow-step">STEP 5<br><small>実績蓄積<br>県内展開</small></div>
-</div>
-
-<div class="info-box">
-  <strong>目標:</strong> 琉球銀行の補助金支援を「確認書発行中心」から<strong>「案件創出・申請支援の一気通貫」</strong>に転換。3年で年間50件超の採択支援を実現し、沖縄県内の補助金支援における<strong>金融機関No.1のポジション</strong>を確立する。
+  <div class="flow-step">STEP 5<br><small>県内シェア<br>30%へ拡大</small></div>
 </div>
 
 <div class="highlight-box">
   <strong>次のアクション:</strong><br>
-  1. DX診断サービス受診企業の中から補助金候補をスクリーニング<br>
-  2. 沖縄の4大テーマ（観光DX・泡盛海外展開・IT新事業・建設省力化）ごとにパイロットケース選定<br>
-  3. SEVENRICHとの共同セミナー開催（沖縄県内の法人顧客向け「補助金活用説明会」）<br>
-  4. りゅうぎん総合研究所の機能拡張 or 専門チーム設置の検討
+  1. DX診断サービス受診企業リストと大口融資先から、補助金候補企業を20社抽出<br>
+  2. 4テーマ（観光DX・泡盛海外展開・IT新事業・建設省力化）でパイロットケース各2〜3件選定<br>
+  3. 大口投資案件から大型補助金（大規模成長投資・成長加速化）候補を1〜2件特定<br>
+  4. 琉球銀行×SEVENRICHで「補助金を法人深耕機能として運営する」パイロット体制を3か月で立ち上げ
+</div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 7: NATIONAL CONTEXT -->
+<!-- ============================================================ -->
+<section id="national-context">
+<h2 class="section-title">参考：全国の地銀ランキング</h2>
+
+<p>全国146地銀の補助金支援件数ランキング。上位は製造業集積地の地銀が占めるが、<strong>福岡銀行のように大型案件に特化して売上上位に入る例もある。</strong></p>
+
+<h3 class="subsection-title">件数ランキングTOP10</h3>
+
+<table>
+<thead><tr><th>順位</th><th>銀行名</th><th>合計</th><th>もの</th><th>大規模</th><th>加速化</th><th>新事業</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>静岡銀行</strong></td><td><strong>229</strong></td><td>211</td><td>10</td><td>7</td><td>1</td></tr>
+<tr><td>2</td><td>名古屋銀行</td><td>207</td><td>205</td><td>2</td><td>0</td><td>0</td></tr>
+<tr><td>3</td><td>八十二銀行</td><td>144</td><td>133</td><td>8</td><td>3</td><td>0</td></tr>
+<tr><td>4</td><td>常陽銀行</td><td>120</td><td>114</td><td>5</td><td>1</td><td>0</td></tr>
+<tr><td>5</td><td>京都銀行</td><td>119</td><td>109</td><td>4</td><td>6</td><td>0</td></tr>
+<tr><td>6</td><td>大分銀行</td><td>100</td><td>96</td><td>3</td><td>1</td><td>0</td></tr>
+<tr><td>7</td><td>中国銀行</td><td>97</td><td>86</td><td>6</td><td>5</td><td>0</td></tr>
+<tr><td>8</td><td>山形銀行</td><td>94</td><td>91</td><td>1</td><td>2</td><td>0</td></tr>
+<tr><td>9</td><td>伊予銀行</td><td>88</td><td>83</td><td>3</td><td>2</td><td>0</td></tr>
+<tr><td>10</td><td>北陸銀行</td><td>86</td><td>77</td><td>6</td><td>3</td><td>0</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">売上ランキングTOP5（大型案件の威力）</h3>
+
+<table>
+<thead><tr><th>順位</th><th>銀行名</th><th>もの補<br>件数</th><th>大規模成長<br>件数</th><th>推定売上</th><th>示唆</th></tr></thead>
+<tbody>
+<tr><td>1</td><td><strong>広島銀行</strong></td><td>36件</td><td><strong>18件</strong></td><td><strong>10.26億</strong></td><td>件数20位台だが売上1位。大型案件の威力</td></tr>
+<tr><td>2</td><td>静岡銀行</td><td>213件</td><td>10件</td><td>8.78億</td><td>件数・大型ともにバランス型</td></tr>
+<tr><td>3</td><td>群馬銀行</td><td>62件</td><td>12件</td><td>7.02億</td><td>大規模成長投資12件が牽引</td></tr>
+<tr><td>6</td><td><strong>福岡銀行</strong></td><td><strong>8件</strong></td><td><strong>9件</strong></td><td><strong>5.03億</strong></td><td><span class="badge badge-warn">もの補8件でも売上5億</span></td></tr>
+</tbody>
+</table>
+
+<div class="info-box">
+  <strong>琉球銀行にとっての意味:</strong> 「全国TOP10に入る」必要はない。沖縄県という小さな市場で<strong>シェア30%を押さえ、大型案件を年間2〜3件獲得する</strong>だけで、推定売上2億円台は現実的な目標。福岡銀行モデルが示すように、もの補の件数が少なくても大型案件で売上は作れる。
 </div>
 </section>
 
@@ -588,6 +649,30 @@ table tr:nth-child(even) td{background:#fafafa}
 </tbody>
 </table>
 
+<h3 class="subsection-title">沖縄県の市場データ</h3>
+<table>
+<thead><tr><th>指標</th><th>数値</th><th>出典</th></tr></thead>
+<tbody>
+<tr><td>沖縄県 4制度採択件数</td><td><strong>210件</strong></td><td>公示採択事例（全数抽出）</td></tr>
+<tr><td>うち銀行が関与</td><td>23件（琉球20件+沖縄3件）</td><td>同上</td></tr>
+<tr><td>製造業比率（GDP）</td><td>4.7%（全国最低）</td><td>県統計</td></tr>
+<tr><td>建設業比率（GDP）</td><td>9.0%（全国8位）</td><td>県統計</td></tr>
+<tr><td>IT関連企業</td><td>100社超 / 雇用2万人超</td><td>県産業振興公社</td></tr>
+<tr><td>琉球銀行メインバンクシェア</td><td>約40%（県内最大）</td><td>帝国DB調査</td></tr>
+</tbody>
+</table>
+
+<h3 class="subsection-title">琉球銀行 参照情報</h3>
+<table>
+<thead><tr><th>項目</th><th>内容</th></tr></thead>
+<tbody>
+<tr><td>中期経営計画</td><td>Empower 2025（2025年4月〜2028年3月、純利益75億円目標）</td></tr>
+<tr><td>DX診断</td><td>2025年4月より法人向けDX診断サービスを展開開始</td></tr>
+<tr><td>新本店ビル</td><td>2026年オープン予定。グループ会社集約・連携強化</td></tr>
+<tr><td>グループシンクタンク</td><td>りゅうぎん総合研究所（2006年設立、連結子会社）</td></tr>
+</tbody>
+</table>
+
 <h3 class="subsection-title">SEVENRICH Accounting 実績データの対象範囲</h3>
 <table>
 <thead><tr><th>制度</th><th>対象回</th><th>申請件数</th></tr></thead>
@@ -600,35 +685,10 @@ table tr:nth-child(even) td{background:#fafafa}
 <tr style="font-weight:700;background:#f0f0f0"><td>合計</td><td>2024〜2025年公募分</td><td>45件</td></tr>
 </tbody>
 </table>
-
-<h3 class="subsection-title">琉球銀行 参照情報</h3>
-<table>
-<thead><tr><th>項目</th><th>内容</th></tr></thead>
-<tbody>
-<tr><td>中期経営計画</td><td>Empower 2025（2025年4月〜2028年3月、純利益75億円目標）</td></tr>
-<tr><td>DX診断</td><td>2025年4月より法人向けDX診断サービスを展開開始</td></tr>
-<tr><td>新本店ビル</td><td>2026年オープン予定。グループ会社集約・連携強化</td></tr>
-<tr><td>スタートアップ</td><td>BORベンチャーファンド2号、OKINAWA Startup Program運営</td></tr>
-<tr><td>メインバンクシェア</td><td>約40%（県内最大、帝国DB調査）。3行で9割超</td></tr>
-<tr><td>グループシンクタンク</td><td>りゅうぎん総合研究所（2006年設立、連結子会社）</td></tr>
-</tbody>
-</table>
-
-<h3 class="subsection-title">沖縄県 産業構造データ</h3>
-<table>
-<thead><tr><th>指標</th><th>沖縄県</th><th>全国平均</th><th>出典</th></tr></thead>
-<tbody>
-<tr><td>第三次産業比率</td><td>78.2%（全国2位）</td><td>70.6%</td><td>県統計</td></tr>
-<tr><td>製造業比率（GDP）</td><td>4.7%（全国最低）</td><td>15.7%</td><td>県統計</td></tr>
-<tr><td>建設業比率（GDP）</td><td>9.0%（全国8位）</td><td>7.3%</td><td>県統計</td></tr>
-<tr><td>製造業事業者数</td><td>1,048社</td><td>—</td><td>工業統計</td></tr>
-<tr><td>IT関連企業</td><td>100社超 / 雇用2万人超</td><td>—</td><td>県産業振興公社</td></tr>
-</tbody>
-</table>
 </section>
 
 <footer class="report-footer">
-  琉球銀行×補助金支援 市場分析レポート — 公示採択事例全数分析 — Generated 2026-04-22 — SEVENRICH Accounting
+  琉球銀行 補助金支援 事業戦略レポート — 公示採択事例全数分析 — Generated 2026-04-22 — SEVENRICH Accounting
 </footer>
 
 </div>
